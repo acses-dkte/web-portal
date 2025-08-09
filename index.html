@@ -27,20 +27,23 @@
             ink: '#0F0F14'
           },
           boxShadow: {
-            glow: '0 10px 30px rgba(177,59,255,0.35)',
-            soft: '0 8px 30px rgba(0,0,0,0.12)'
+            glow: '0 10px 30px rgba(177,59,255,0.4)',
+            soft: '0 8px 30px rgba(0,0,0,0.12)',
+            card: '0 6px 15px rgba(0,0,0,0.2)'
           },
           animation: {
             float: 'float 6s ease-in-out infinite',
             'pulse-soft': 'pulseSoft 2.5s ease-in-out infinite',
             shimmer: 'shimmer 2.2s linear infinite',
-            marquee: 'marquee 25s linear infinite'
+            marquee: 'marquee 25s linear infinite',
+            fadeUp: 'fadeUp 0.7s ease forwards'
           },
           keyframes: {
             float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-12px)' } },
             pulseSoft: { '0%,100%': { opacity: '1' }, '50%': { opacity: '0.8' } },
             shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
-            marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } }
+            marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+            fadeUp: { '0%': {opacity:0, transform:'translateY(20px)'}, '100%': {opacity:1, transform:'translateY(0)'} }
           }
         }
       }
@@ -49,19 +52,14 @@
 
   <!-- Custom Styles -->
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     :root {
       --glass-dark: rgba(15, 15, 20, 0.55);
       --radius: 16px;
     }
-    body {
-      background: #0B1020;
-    }
-    html, body {
-      overflow-x: hidden;
-    }
+    body { background: #0B1020; }
+    html, body { overflow-x: hidden; }
+
     /* Background gradient for hero */
     .bg-hero {
       background:
@@ -70,6 +68,7 @@
         radial-gradient(1000px 500px at 50% 120%, #0EA5E933, transparent 60%),
         linear-gradient(180deg, #070A16 0%, #0B1020 40%, #0A0F21 100%);
     }
+
     /* Glassmorphism effect */
     .glass {
       background: var(--glass-dark);
@@ -79,58 +78,51 @@
       border-radius: var(--radius);
       max-width: 100%;
     }
-    /* Magnetic button style */
+
+    /* Magnetic button */
     .btn-magnetic {
       position: relative;
       overflow: hidden;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
-      box-shadow: 0 10px 24px rgba(177, 59, 255, 0.35);
+      box-shadow: 0 10px 24px rgba(177,59,255,0.35);
       will-change: transform;
     }
-    .btn-magnetic:active {
-      transform: translateY(1px) scale(0.99);
-    }
-    /* Shimmer animation for highlights */
+    .btn-magnetic:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 28px rgba(255,211,78,0.4);}
+    .btn-magnetic:active { transform: translateY(1px) scale(0.99); }
+
+    /* Shimmer */
     .shimmer {
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
       background-size: 200% 100%;
       animation: shimmer 2.5s linear infinite;
       pointer-events: none;
     }
-    /* 3D card hover effect */
+
+    /* Card hover */
     .card-3d {
       transform-style: preserve-3d;
       transition: transform 300ms ease, box-shadow 300ms ease;
     }
     .card-3d:hover {
-      transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35), 0 8px 22px rgba(177, 59, 255, 0.25);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: var(--card-hover, 0 18px 45px rgba(0,0,0,0.35));
     }
-    /* Reveal animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    .reveal.in {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 720ms cubic-bezier(0.2, 0.65, 0.3, 1);
-    }
-    /* Navbar scrolled effect */
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(10px); }
+    .reveal.in { opacity: 1; transform: translateY(0); transition: all 720ms cubic-bezier(0.2, 0.65, 0.3, 1); }
+
+    /* Navbar scrolled */
     nav.scrolled {
       background: rgba(13, 16, 32, 0.6);
       backdrop-filter: blur(10px) saturate(160%);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
+
     /* Mobile menu */
-    #mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-    #mobile-menu.open {
-      max-height: 560px;
-    }
+    #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    #mobile-menu.open { max-height: 560px; }
+
     /* Gradient text */
     .text-gradient {
       background: linear-gradient(135deg, #FFD34E, #B13BFF 60%, #5E17EB);
@@ -138,33 +130,67 @@
       background-clip: text;
       color: transparent;
     }
+
     /* Marquee */
-    .track {
-      width: 200%;
+    .track { width: 200%; }
+
+    /* Nav link underline animation */
+    .nav-link { position: relative; padding: 0.25rem 0.5rem; transition: color 0.2s; }
+    .nav-link::after {
+      content: '';
+      display: block;
+      border-bottom: 2px solid #FFD34E;
+      width: 100%;
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      position: absolute;
+      left: 0; bottom: 0;
     }
- .nav-link {
-  position: relative;
-  padding: 0.25rem 0.5rem; /* px-2 py-1 */
-  transition: color 0.2s;
+    .nav-link:hover,
+    .nav-link.active-nav { color: #FFD34E; }
+    .nav-link:hover::after,
+    .nav-link.active-nav::after { transform: scaleX(1); }
+
+    /* Image hover */
+    .img-hover:hover { transform: scale(1.05); transition: transform 0.6s ease; }
+
+    /* Upcoming event hover: gold border/glow */
+.upcoming-card:hover {
+  border: 2px solid #FFD34E; /* gold */
+  box-shadow: 0 0 20px rgba(255, 211, 78, 0.4);
+  transform: translateY(-4px) scale(1.02);
+  transition: all 0.1s ease;
 }
-.nav-link::after {
-  content: '';
-  display: block;
-  border-bottom: 2px solid #FFD34E; /* highlight color */
-  width: 100%;
-  transform: scaleX(0);
-  transition: transform 0.3s;
-  position: absolute;
-  left: 0; bottom: 0;
+
+/* Team card hover: lift + gold border */
+.team-card:hover {
+  border: 2px solid #B13BFF;
+  box-shadow: 0 0 15px rgba(255, 211, 78, 0.35);
+  transform: translateY(-5px) scale(1.03);
+  transition: all 0.3s ease;
 }
-.nav-link:hover,
-.nav-link.active-nav {
-  color: #FFD34E;
+
+/* Past events hover: image zoom + border glow */
+.past-card img {
+  transition: transform 0.6s ease;
 }
-.nav-link:hover::after,
-.nav-link.active-nav::after {
-  transform: scaleX(1);
+.past-card:hover {
+  border: 2px solid #B13BFF;
+  box-shadow: 0 0 15px rgba(255, 211, 78, 0.35);
+  transform: translateY(-4px) scale(1.02);
+  transition: all 0.1s ease;
 }
+.past-card:hover img {
+  transform: scale(1.05);
+}
+/* Benefit card hover: lift + glow */
+.benefit-card:hover {
+  border: 2px solid #FFD34E; /* gold */
+  box-shadow: 0 0 20px rgba(255, 211, 78, 0.4);
+  transform: translateY(-5px) scale(1.03);
+  transition: all 0.3s ease;
+}
+
 
   </style>
 </head>
@@ -184,12 +210,12 @@
 
         <div class="hidden md:flex items-center gap-6">
             <a href="#home"     class="js-nav-link nav-link">Home</a>
-<a href="#about"    class="js-nav-link nav-link">About</a>
-<a href="#team"     class="js-nav-link nav-link">Team</a>
-<a href="#events"   class="js-nav-link nav-link">Events</a>
-<a href="#benefits" class="js-nav-link nav-link">Benefits</a>
-<a href="#join"     class="js-nav-link nav-link">Join</a>
-<a href="#contact"  class="js-nav-link nav-link">Contact</a>
+            <a href="#about"    class="js-nav-link nav-link">About</a>
+            <a href="#team"     class="js-nav-link nav-link">Team</a>
+            <a href="#events"   class="js-nav-link nav-link">Events</a>
+            <a href="#benefits" class="js-nav-link nav-link">Benefits</a>
+            <a href="#join"     class="js-nav-link nav-link">Join</a>
+            <a href="#contact"  class="js-nav-link nav-link">Contact</a>
 
           <!-- <button
             id="toggleTheme"
@@ -467,7 +493,7 @@
       </div>
 
       <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-full">
-        <div class="glass p-6 rounded-2xl card-3d reveal">
+        <div class="glass p-6 rounded-2xl card-3d reveal benefit-card">
           <i class="fa-solid fa-laptop-code text-2xl text-highlight"></i>
           <h4 class="mt-4 font-semibold text-lg">Technical Workshops</h4>
           <p class="text-white/70 mt-1">
@@ -475,7 +501,7 @@
           </p>
         </div>
 
-        <div class="glass p-6 rounded-2xl card-3d reveal">
+        <div class="glass p-6 rounded-2xl card-3d reveal benefit-card">
           <i class="fa-solid fa-people-group text-2xl text-highlight"></i>
           <h4 class="mt-4 font-semibold text-lg">Mentorship & Peers</h4>
           <p class="text-white/70 mt-1">
@@ -483,7 +509,7 @@
           </p>
         </div>
 
-        <div class="glass p-6 rounded-2xl card-3d reveal">
+        <div class="glass p-6 rounded-2xl card-3d reveal benefit-card">
           <i class="fa-solid fa-briefcase text-2xl text-highlight"></i>
           <h4 class="mt-4 font-semibold text-lg">Career Pathways</h4>
           <p class="text-white/70 mt-1">
@@ -491,7 +517,7 @@
           </p>
         </div>
 
-        <div class="glass p-6 rounded-2xl card-3d reveal">
+        <div class="glass p-6 rounded-2xl card-3d reveal benefit-card">
           <i class="fa-solid fa-ranking-star text-2xl text-highlight"></i>
           <h4 class="mt-4 font-semibold text-lg">Competitions</h4>
           <p class="text-white/70 mt-1">
@@ -499,7 +525,7 @@
           </p>
         </div>
 
-        <div class="glass p-6 rounded-2xl card-3d reveal">
+        <div class="glass p-6 rounded-2xl card-3d reveal benefit-card">
           <i class="fa-solid fa-diagram-project text-2xl text-highlight"></i>
           <h4 class="mt-4 font-semibold text-lg">Real Projects</h4>
           <p class="text-white/70 mt-1">
@@ -507,7 +533,7 @@
           </p>
         </div>
 
-        <div class="glass p-6 rounded-2xl card-3d reveal">
+        <div class="glass p-6 rounded-2xl card-3d reveal benefit-card">
           <i class="fa-solid fa-certificate text-2xl text-highlight"></i>
           <h4 class="mt-4 font-semibold text-lg">Certificates</h4>
           <p class="text-white/70 mt-1">
@@ -676,89 +702,66 @@
     // Update footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-const sections = Array.from(document.querySelectorAll("section[id]"));
-const navLinks = Array.from(document.querySelectorAll(".js-nav-link"));
-
-function setActiveNav() {
-  let scroll = window.scrollY + 85; // Adjust offset if header height changes
-  let currentSection = sections[0];
-  for (const section of sections) {
-    if (section.offsetTop <= scroll) currentSection = section;
-  }
-  navLinks.forEach(link => {
-    link.classList.remove("active-nav");
-    const href = link.getAttribute("href");
-    if (href && href === "#" + currentSection.id) link.classList.add("active-nav");
-  });
-}
-window.addEventListener("scroll", setActiveNav);
-window.addEventListener("DOMContentLoaded", setActiveNav);
-
-
-    // Navbar scroll background toggle
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 24);
+  // Active nav
+  const sections = Array.from(document.querySelectorAll("section[id]"));
+  const navLinks = Array.from(document.querySelectorAll(".js-nav-link"));
+  function setActiveNav() {
+    let scroll = window.scrollY + 85;
+    let currentSection = sections[0];
+    for (const section of sections) {
+      if (section.offsetTop <= scroll) currentSection = section;
+    }
+    navLinks.forEach(link => {
+      link.classList.remove("active-nav");
+      if (link.getAttribute("href") === "#" + currentSection.id) {
+        link.classList.add("active-nav");
+      }
     });
+  }
+  window.addEventListener("scroll", setActiveNav);
+  window.addEventListener("DOMContentLoaded", setActiveNav);
 
-    // Mobile menu toggle
-    const mobileBtn = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+  // Navbar scroll background toggle
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 24);
+  });
+
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileBtn) {
     mobileBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('open');
-      mobileMenu.setAttribute(
-        'aria-hidden',
-        mobileMenu.classList.contains('open') ? 'false' : 'true'
-      );
+      mobileMenu.setAttribute('aria-hidden', mobileMenu.classList.contains('open') ? 'false' : 'true');
     });
+  }
 
-    // Dark mode toggle buttons
-    const themeBtns = [
-      document.getElementById('toggleTheme'),
-      document.getElementById('toggleThemeM'),
-    ];
-    const applyTheme = (mode) => {
-      document.documentElement.classList.toggle('dark', mode === 'dark');
-      localStorage.setItem('theme', mode);
-    };
-    const stored = localStorage.getItem('theme');
-    if (stored) applyTheme(stored);
-    themeBtns.forEach((btn) =>
-      btn &&
-      btn.addEventListener('click', () => {
-        const dark = document.documentElement.classList.contains('dark');
-        applyTheme(dark ? 'light' : 'dark');
-      })
-    );
-
-    // IntersectionObserver for reveal animations
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in');
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-
-    // Smooth scrolling for anchor links and close mobile menu on click
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', (e) => {
-        const id = anchor.getAttribute('href');
-        if (id.length > 1) {
-          e.preventDefault();
-          const el = document.querySelector(id);
-          if (el)
-            window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
-          mobileMenu.classList.remove('open');
-          mobileMenu.setAttribute('aria-hidden', 'true');
-        }
-      });
+  // IntersectionObserver for reveal anims
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Smooth scroll + close menu
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const id = anchor.getAttribute('href');
+      if (id.length > 1) {
+        e.preventDefault();
+        const el = document.querySelector(id);
+        if (el)
+          window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+      }
+    });
+  });
 
     // Team data array
     const teamData = [
@@ -840,7 +843,7 @@ window.addEventListener("DOMContentLoaded", setActiveNav);
     const teamContainer = document.getElementById('team-container');
     teamData.forEach((group, index) => {
       const card = document.createElement('div');
-      card.className = 'glass p-6 rounded-2xl card-3d reveal';
+      card.className = 'glass p-6 rounded-2xl card-3d reveal team-card';
       card.style.transitionDelay = index * 60 + 'ms';
 
       // Generate member cards with initials avatar
@@ -918,9 +921,10 @@ window.addEventListener("DOMContentLoaded", setActiveNav);
     const upcomingContainer = document.getElementById('upcoming-events-container');
     upcomingEvents.forEach((event, index) => {
       const eventCard = document.createElement('div');
-      eventCard.className = `relative overflow-hidden rounded-2xl glass card-3d reveal ${
+     eventCard.className = `relative overflow-hidden rounded-2xl glass card-3d reveal upcoming-card ${
         event.isHighlighted ? 'ring-2 ring-highlight/60 shadow-glow' : ''
       }`;
+
       eventCard.style.transitionDelay = index * 80 + 'ms';
       eventCard.innerHTML = `
         <div class="relative">
@@ -950,7 +954,7 @@ window.addEventListener("DOMContentLoaded", setActiveNav);
     const pastContainer = document.getElementById('past-events-container');
     pastEvents.forEach((event, index) => {
       const eventCard = document.createElement('div');
-      eventCard.className = 'overflow-hidden rounded-2xl glass card-3d reveal';
+      eventCard.className = 'overflow-hidden rounded-2xl glass card-3d reveal past-card';
       eventCard.style.transitionDelay = index * 80 + 'ms';
       eventCard.innerHTML = `
         <div class="relative group">
