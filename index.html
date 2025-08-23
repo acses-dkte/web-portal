@@ -6,6 +6,7 @@
     <title>
       ACSES — Association of Computer Science and Engineering Students
     </title>
+  <link rel="icon" type="image/x-icon" href="assets/images/acses_img.jpg">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -68,628 +69,240 @@
       };
     </script>
 
-    <!-- Custom Styles -->
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      :root {
-        --glass-dark: rgba(15, 15, 20, 0.55);
-        --radius: 16px;
-      }
-      body {
-        background: #0b1020;
-      }
-      html,
-      body {
-        overflow-x: hidden;
-      }
-
-      /* Background gradient for hero */
-      .bg-hero {
-        background: radial-gradient(
-            1200px 600px at 10% -10%,
-            #5e17eb33,
-            transparent 60%
-          ),
-          radial-gradient(1200px 600px at 90% 20%, #b13bff33, transparent 60%),
-          radial-gradient(1000px 500px at 50% 120%, #0ea5e933, transparent 60%),
-          linear-gradient(180deg, #070a16 0%, #0b1020 40%, #0a0f21 100%);
-      }
-
-      /* Glassmorphism effect */
-      .glass {
-        background: var(--glass-dark);
-        backdrop-filter: blur(12px) saturate(140%);
-        -webkit-backdrop-filter: blur(12px) saturate(140%);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: var(--radius);
-        max-width: 100%;
-      }
-
-      /* Magnetic button */
-      .btn-magnetic {
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-        box-shadow: 0 10px 24px rgba(177, 59, 255, 0.35);
-        will-change: transform;
-      }
-      .btn-magnetic:hover {
-        transform: translateY(-3px) scale(1.03);
-        box-shadow: 0 12px 28px rgba(255, 211, 78, 0.4);
-      }
-      .btn-magnetic:active {
-        transform: translateY(1px) scale(0.99);
-      }
-
-      /* Shimmer */
-      .shimmer {
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.35),
-          transparent
-        );
-        background-size: 200% 100%;
-        animation: shimmer 2.5s linear infinite;
-        pointer-events: none;
-      }
-
-      /* Card hover */
-      .card-3d {
-        transform-style: preserve-3d;
-        transition: transform 300ms ease, box-shadow 300ms ease;
-      }
-      .card-3d:hover {
-        transform: translateY(-6px) scale(1.02);
-        box-shadow: var(--card-hover, 0 18px 45px rgba(0, 0, 0, 0.35));
-      }
-
-      /* Reveal */
-      .reveal {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      .reveal.in {
-        opacity: 1;
-        transform: translateY(0);
-        transition: all 720ms cubic-bezier(0.2, 0.65, 0.3, 1);
-      }
-
-      /* Navbar scrolled */
-      nav.scrolled {
-        background: rgba(13, 16, 32, 0.6);
-        backdrop-filter: blur(10px) saturate(160%);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      /* Mobile menu */
-      #mobile-menu {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-      }
-      #mobile-menu.open {
-        max-height: 560px;
-      }
-
-      /* Gradient text */
-      .text-gradient {
-        background: linear-gradient(135deg, #ffd34e, #b13bff 60%, #5e17eb);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      /* Marquee */
-      .track {
-        width: 200%;
-      }
-
-      /* Nav link underline animation */
-      .nav-link {
-        position: relative;
-        padding: 0.25rem 0.5rem;
-        transition: color 0.2s;
-      }
-      .nav-link::after {
-        content: "";
-        display: block;
-        border-bottom: 2px solid #ffd34e;
-        width: 100%;
-        transform: scaleX(0);
-        transition: transform 0.3s;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-      }
-      .nav-link:hover,
-      .nav-link.active-nav {
-        color: #ffd34e;
-      }
-      .nav-link:hover::after,
-      .nav-link.active-nav::after {
-        transform: scaleX(1);
-      }
-
-      /* Image hover */
-      .img-hover:hover {
-        transform: scale(1.05);
-        transition: transform 0.6s ease;
-      }
-
-      /* Upcoming event hover: gold border/glow */
-      .upcoming-card:hover {
-        border: 2px solid #ffd34e; /* gold */
-        box-shadow: 0 0 20px rgba(255, 211, 78, 0.4);
-        transform: translateY(-4px) scale(1.02);
-        transition: all 0.1s ease;
-      }
-
-      /* Team card hover: lift + gold border */
-      .team-card:hover {
-        border: 2px solid #b13bff;
-        box-shadow: 0 0 15px rgba(255, 211, 78, 0.35);
-        transform: translateY(-5px) scale(1.03);
-        transition: all 0.3s ease;
-      }
-
-      /* Past events hover: image zoom + border glow */
-      .past-card img {
-        transition: transform 0.6s ease;
-      }
-      .past-card:hover {
-        border: 2px solid #b13bff;
-        box-shadow: 0 0 15px rgba(255, 211, 78, 0.35);
-        transform: translateY(-4px) scale(1.02);
-        transition: all 0.1s ease;
-      }
-      .past-card:hover img {
-        transform: scale(1.05);
-      }
-      /* Benefit card hover: lift + glow */
-      .benefit-card:hover {
-        border: 2px solid #ffd34e; /* gold */
-        box-shadow: 0 0 20px rgba(255, 211, 78, 0.4);
-        transform: translateY(-5px) scale(1.03);
-        transition: all 0.3s ease;
-      }
-/* Background floating particles - kept subtle */
-.particle {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: radial-gradient(circle, rgba(177, 59, 255, 0.3) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: float-particles 8s infinite ease-in-out;
-}
-
-.particle-1 { top: 10%; left: 10%; animation-delay: 0s; }
-.particle-2 { top: 20%; right: 15%; animation-delay: 1s; }
-.particle-3 { bottom: 30%; left: 20%; animation-delay: 2s; }
-.particle-4 { bottom: 20%; right: 20%; animation-delay: 3s; }
-.particle-5 { top: 50%; left: 50%; animation-delay: 4s; }
-
-@keyframes float-particles {
-  0%, 100% { 
-    transform: translateY(0) scale(1); 
-    opacity: 0.2;
-  }
-  50% { 
-    transform: translateY(-30px) scale(1.3); 
-    opacity: 0.5;
-  }
-}
-
-/* Enhanced letter animations - gentle white backdrop */
-.letter-path {
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0 3px rgba(255,255,255,0.15)) 
-          drop-shadow(0 0 8px currentColor) 
-          drop-shadow(0 0 1px rgba(255,255,255,0.3));
-}
-
-.connection-line {
-  stroke-linecap: round;
-  filter: drop-shadow(0 0 2px rgba(255,255,255,0.1)) drop-shadow(0 0 6px currentColor);
-}
-
-/* SVG container with gentle overall glow */
-svg {
-  filter: drop-shadow(0 0 6px rgba(177, 59, 255, 0.2)) 
-          drop-shadow(0 0 12px rgba(255, 255, 255, 0.08));
-  animation: svg-pulse 4s ease-in-out infinite;
-}
-
-@keyframes svg-pulse {
-  0%, 100% { 
-    filter: drop-shadow(0 0 6px rgba(177, 59, 255, 0.2)) 
-            drop-shadow(0 0 12px rgba(255, 255, 255, 0.08));
-    transform: scale(1);
-  }
-  50% { 
-    filter: drop-shadow(0 0 10px rgba(255, 211, 78, 0.25)) 
-            drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
-    transform: scale(1.005);
-  }
-}
-
-/* Typewriter effect with gentle glow */
-.typewriter-text {
-  animation: typewriter 2s steps(50) forwards, blink 1s infinite;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid rgba(255, 211, 78, 0.8);
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
-}
-
-@keyframes typewriter {
-  0% { 
-    width: 0; 
-    opacity: 1;
-  }
-  100% { 
-    width: 100%; 
-    opacity: 1;
-  }
-}
-
-@keyframes blink {
-  0%, 50% { border-color: rgba(255, 211, 78, 0.8); }
-  51%, 100% { border-color: transparent; }
-}
-
-/* Fade up animation for loading text */
-.fade-up-text {
-  animation: fade-up 1s ease forwards;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.08);
-}
-
-@keyframes fade-up {
-  from { 
-    opacity: 0; 
-    transform: translateY(20px); 
-  }
-  to { 
-    opacity: 0.8; 
-    transform: translateY(0); 
-  }
-}
-
-/* Progress bar animation */
-.progress-bar {
-  animation: fill-progress 6s ease-out forwards;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
-}
-
-@keyframes fill-progress {
-  0% { width: 0%; }
-  100% { width: 100%; }
-}
-
-/* Enhanced gradient text with subtle white enhancement */
-.text-gradient {
-  background: linear-gradient(135deg, rgba(255, 211, 78, 0.95) 0%, rgba(177, 59, 255, 0.9) 50%, rgba(94, 23, 235, 0.95) 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.1));
-}
-
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* Screen size adjustments */
-@media (max-width: 640px) {
-  svg { width: 350px; height: 110px; }
-  .typewriter-text { font-size: 0.9rem; }
-}
-
-
-/* Enhanced gradient text - reduced saturation */
-.text-gradient {
-  background: linear-gradient(135deg, rgba(255, 211, 78, 0.9) 0%, rgba(177, 59, 255, 0.8) 50%, rgba(94, 23, 235, 0.9) 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 3s ease-in-out infinite;
-}
-
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* Screen size adjustments */
-@media (max-width: 640px) {
-  svg { width: 350px; height: 110px; }
-  .typewriter-text { font-size: 0.9rem; }
-}
-
-
-
-
-
-
-    </style>
+<link rel="stylesheet" href="assets/css/styles.css">
   </head>
+
   <body class="text-white selection:bg-accent/30 selection:text-white">
 
-<div id="loader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-primary overflow-hidden">
-  <!-- Background animated particles -->
-  <div class="absolute inset-0">
-    <div class="particle particle-1"></div>
-    <div class="particle particle-2"></div>
-    <div class="particle particle-3"></div>
-    <div class="particle particle-4"></div>
-    <div class="particle particle-5"></div>
-  </div>
-  
-  <!-- Main SVG Animation -->
-  <svg width="450" height="140" viewBox="0 0 450 140" class="max-w-full relative z-10">
-   
-<!-- Gradient Definitions - Balanced brightness -->
-<defs>
-  <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" style="stop-color:#b13bff;stop-opacity:0.9" />
-    <stop offset="50%" style="stop-color:#ffd34e;stop-opacity:0.9" />
-    <stop offset="100%" style="stop-color:#5e17eb;stop-opacity:0.9" />
-  </linearGradient>
-  
-  <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
-    <stop offset="0%" style="stop-color:#ffd34e;stop-opacity:0.3" />
-    <stop offset="70%" style="stop-color:#ffffff;stop-opacity:0.05" />
-    <stop offset="100%" style="stop-color:#b13bff;stop-opacity:0" />
-  </radialGradient>
-  
-  <filter id="glow">
-    <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-    <feFlood flood-color="white" flood-opacity="0.08" result="whiteGlow"/>
-    <feGaussianBlur in="whiteGlow" stdDeviation="1" result="softWhite"/>
-    <feMerge> 
-      <feMergeNode in="softWhite"/>
-      <feMergeNode in="coloredBlur"/>
-      <feMergeNode in="SourceGraphic"/>
-    </feMerge>
-  </filter>
-</defs>
 
-
-    
-    <!-- Connection lines that appear between letters -->
-    <line class="connection-line" x1="70" y1="70" x2="100" y2="70" stroke="url(#grad1)" stroke-width="2" opacity="0">
-      <animate attributeName="opacity" values="0;1;0.7" dur="0.8s" begin="1.5s" fill="freeze"/>
-      <animate attributeName="stroke-width" values="2;6;2" dur="2s" begin="1.5s" repeatCount="indefinite"/>
-    </line>
-    
-    <line class="connection-line" x1="150" y1="70" x2="180" y2="70" stroke="url(#grad1)" stroke-width="2" opacity="0">
-      <animate attributeName="opacity" values="0;1;0.7" dur="0.8s" begin="2.1s" fill="freeze"/>
-      <animate attributeName="stroke-width" values="2;6;2" dur="2s" begin="2.1s" repeatCount="indefinite"/>
-    </line>
-    
-    <line class="connection-line" x1="230" y1="70" x2="260" y2="70" stroke="url(#grad1)" stroke-width="2" opacity="0">
-      <animate attributeName="opacity" values="0;1;0.7" dur="0.8s" begin="2.7s" fill="freeze"/>
-      <animate attributeName="stroke-width" values="2;6;2" dur="2s" begin="2.7s" repeatCount="indefinite"/>
-    </line>
-    
-    <line class="connection-line" x1="320" y1="70" x2="350" y2="70" stroke="url(#grad1)" stroke-width="2" opacity="0">
-      <animate attributeName="opacity" values="0;1;0.7" dur="0.8s" begin="3.3s" fill="freeze"/>
-      <animate attributeName="stroke-width" values="2;6;2" dur="2s" begin="3.3s" repeatCount="indefinite"/>
-    </line>
-    
-    <!-- Letter A - Position 1 -->
-    <path class="letter-path letter-a" fill="none" stroke="#b13bff" stroke-width="4" filter="url(#glow)">
-      <animate attributeName="d" 
-        values="M40,100 L40,100 L40,100 Z;
-                M20,100 L40,40 L60,100 Z;
-                M20,100 L40,40 L60,100 M25,80 L55,80" 
-        dur="1.8s" 
-        begin="0s" 
-        fill="freeze"/>
-      <animate attributeName="stroke-opacity" values="0;1" dur="0.6s" begin="0s" fill="freeze"/>
-      <animate attributeName="stroke-width" values="4;8;4" dur="3s" begin="1.8s" repeatCount="indefinite"/>
-    </path>
-    
-    <!-- Letter C - Position 2 -->
-    <path class="letter-path letter-c" fill="none" stroke="#5e17eb" stroke-width="4" filter="url(#glow)">
-      <animate attributeName="d" 
-        values="M125,70 L125,70 L125,70;
-                M145,50 L105,50 L105,90 L145,90;
-                M145,50 L105,50 L105,90 L145,90" 
-        dur="1.8s" 
-        begin="0.4s" 
-        fill="freeze"/>
-      <animate attributeName="stroke-opacity" values="0;1" dur="0.6s" begin="0.4s" fill="freeze"/>
-      <animate attributeName="stroke-width" values="4;8;4" dur="3s" begin="2.2s" repeatCount="indefinite"/>
-    </path>
-    
-    <!-- Letter S - Position 3 -->
-    <path class="letter-path letter-s1" fill="none" stroke="#ffd34e" stroke-width="4" filter="url(#glow)">
-      <animate attributeName="d" 
-        values="M205,70 Q205,70 205,70;
-                M225,50 L185,50 L185,70 L225,70 L225,90 L185,90;
-                M225,50 L185,50 L185,70 L225,70 L225,90 L185,90" 
-        dur="1.8s" 
-        begin="0.8s" 
-        fill="freeze"/>
-      <animate attributeName="stroke-opacity" values="0;1" dur="0.6s" begin="0.8s" fill="freeze"/>
-      <animate attributeName="stroke-width" values="4;8;4" dur="3s" begin="2.6s" repeatCount="indefinite"/>
-    </path>
-    
-    <!-- Letter E - Position 4 -->
-    <path class="letter-path letter-e" fill="none" stroke="#b13bff" stroke-width="4" filter="url(#glow)">
-      <animate attributeName="d" 
-        values="M285,70 L285,70 L285,70;
-                M285,50 L325,50 M285,50 L285,90 M285,70 L315,70 M285,90 L325,90;
-                M285,50 L325,50 M285,50 L285,90 M285,70 L315,70 M285,90 L325,90" 
-        dur="1.8s" 
-        begin="1.2s" 
-        fill="freeze"/>
-      <animate attributeName="stroke-opacity" values="0;1" dur="0.6s" begin="1.2s" fill="freeze"/>
-      <animate attributeName="stroke-width" values="4;8;4" dur="3s" begin="3s" repeatCount="indefinite"/>
-    </path>
-    
-    <!-- Letter S - Position 5 (Second S) -->
-    <path class="letter-path letter-s2" fill="none" stroke="#5e17eb" stroke-width="4" filter="url(#glow)">
-      <animate attributeName="d" 
-        values="M375,70 Q375,70 375,70;
-                M395,50 L355,50 L355,70 L395,70 L395,90 L355,90;
-                M395,50 L355,50 L355,70 L395,70 L395,90 L355,90" 
-        dur="1.8s" 
-        begin="1.6s" 
-        fill="freeze"/>
-      <animate attributeName="stroke-opacity" values="0;1" dur="0.6s" begin="1.6s" fill="freeze"/>
-      <animate attributeName="stroke-width" values="4;8;4" dur="3s" begin="3.4s" repeatCount="indefinite"/>
-    </path>
-    
-    <!-- Explosion particles when letters complete -->
-    <circle class="explosion-particle" cx="40" cy="30" r="2" fill="#ffd34e" opacity="0">
-      <animate attributeName="opacity" values="0;1;0" dur="1s" begin="1.8s" fill="freeze"/>
-      <animate attributeName="r" values="2;8;0" dur="1s" begin="1.8s" fill="freeze"/>
-      <animate attributeName="cy" values="30;10" dur="1s" begin="1.8s" fill="freeze"/>
-    </circle>
-    
-    <circle class="explosion-particle" cx="125" cy="30" r="2" fill="#b13bff" opacity="0">
-      <animate attributeName="opacity" values="0;1;0" dur="1s" begin="2.2s" fill="freeze"/>
-      <animate attributeName="r" values="2;8;0" dur="1s" begin="2.2s" fill="freeze"/>
-      <animate attributeName="cy" values="30;10" dur="1s" begin="2.2s" fill="freeze"/>
-    </circle>
-    
-    <circle class="explosion-particle" cx="205" cy="30" r="2" fill="#5e17eb" opacity="0">
-      <animate attributeName="opacity" values="0;1;0" dur="1s" begin="2.6s" fill="freeze"/>
-      <animate attributeName="r" values="2;8;0" dur="1s" begin="2.6s" fill="freeze"/>
-      <animate attributeName="cy" values="30;10" dur="1s" begin="2.6s" fill="freeze"/>
-    </circle>
-    
-    <circle class="explosion-particle" cx="305" cy="30" r="2" fill="#ffd34e" opacity="0">
-      <animate attributeName="opacity" values="0;1;0" dur="1s" begin="3s" fill="freeze"/>
-      <animate attributeName="r" values="2;8;0" dur="1s" begin="3s" fill="freeze"/>
-      <animate attributeName="cy" values="30;10" dur="1s" begin="3s" fill="freeze"/>
-    </circle>
-    
-    <circle class="explosion-particle" cx="375" cy="30" r="2" fill="#b13bff" opacity="0">
-      <animate attributeName="opacity" values="0;1;0" dur="1s" begin="3.4s" fill="freeze"/>
-      <animate attributeName="r" values="2;8;0" dur="1s" begin="3.4s" fill="freeze"/>
-      <animate attributeName="cy" values="30;10" dur="1s" begin="3.4s" fill="freeze"/>
-    </circle>
-  </svg>
   
-  <!-- Enhanced subtitle with typewriter effect -->
-  <div class="mt-8 text-center max-w-md">
-    <div class="text-white/80 text-lg font-semibold tracking-wider opacity-0 typewriter-text" 
-         style="animation-delay: 4s;">
-      <span class="text-gradient bg-gradient-to-r from-accent via-highlight to-secondary bg-clip-text text-transparent">
-        Association of Computer Science and Engineering Students
-      </span>
-    </div>
-    <div class="text-white/50 text-sm mt-2 opacity-0 fade-up-text" 
-         style="animation-delay: 5s;">
-      Loading amazing experiences...
-    </div>
+<!-- Next-Level Loading Animation -->
+<div id="loader" class="loading-screen">
+  <!-- Background Effects -->
+  <div class="loading-background">
+    <div class="tech-grid"></div>
+    <div class="floating-code"></div>
+    <div class="energy-waves"></div>
+    <div class="particle-system"></div>
   </div>
-  
-  <!-- Progress bar -->
-  <!-- <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-64 h-1 bg-white/10 rounded-full overflow-hidden">
-    <div class="progress-bar h-full bg-gradient-to-r from-accent to-highlight rounded-full w-0"></div>
-  </div> -->
+
+  <!-- Main Loading Content -->
+  <div class="loading-container">
+    
+    <!-- Logo Animation -->
+    <div class="logo-animation">
+      <div class="logo-wrapper">
+        <div class="logo-icon">
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <div class="logo-glow"></div>
+      </div>
+      
+      <!-- ACSES Text Animation -->
+      <div class="acses-text">
+        <span class="letter" data-letter="A">A</span>
+        <span class="letter" data-letter="C">C</span>
+        <span class="letter" data-letter="S">S</span>
+        <span class="letter" data-letter="E">E</span>
+        <span class="letter" data-letter="S">S</span>
+      </div>
+      
+      <!-- Tagline -->
+      <div class="tagline">
+        <span class="tagline-text">Association of Computer Science & Engineering Students</span>
+      </div>
+    </div>
+
+    <!-- Progress Section -->
+    <div class="progress-section">
+      <!-- Loading Messages -->
+      <div class="loading-messages">
+        <div class="message active" data-message="Initializing systems...">
+          <span class="terminal-prompt">~/acses$ </span>
+          <span class="message-text">Initializing systems...</span>
+          <span class="cursor">_</span>
+        </div>
+        <div class="message" data-message="Loading components...">
+          <span class="terminal-prompt">~/acses$ </span>
+          <span class="message-text">Loading components...</span>
+          <span class="cursor">_</span>
+        </div>
+        <div class="message" data-message="Connecting to community...">
+          <span class="terminal-prompt">~/acses$ </span>
+          <span class="message-text">Connecting to community...</span>
+          <span class="cursor">_</span>
+        </div>
+        <div class="message" data-message="Ready to innovate!">
+          <span class="terminal-prompt">~/acses$ </span>
+          <span class="message-text">Ready to innovate!</span>
+          <span class="cursor">_</span>
+        </div>
+      </div>
+
+      <!-- Progress Bar
+      <div class="progress-container">
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+          <div class="progress-glow"></div>
+        </div>
+        <div class="progress-percentage">0%</div>
+      </div> -->
+
+      <!-- Loading Stats -->
+      <div class="loading-stats">
+        <div class="stat">
+          <span class="stat-label">Members:</span>
+          <span class="stat-value" data-target="2000">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Projects:</span>
+          <span class="stat-value" data-target="500">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Events:</span>
+          <span class="stat-value" data-target="250">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech Elements -->
+    <div class="tech-elements">
+      <div class="binary-rain">
+        <span>01001000</span>
+        <span>01100101</span>
+        <span>01101100</span>
+        <span>01101100</span>
+        <span>01101111</span>
+      </div>
+      
+      <div class="code-snippets">
+        <div class="code-snippet">console.log('Hello ACSES!');</div>
+        <div class="code-snippet">function innovate() { return true; }</div>
+        <div class="code-snippet">const future = await build();</div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 
 
 
-    <!-- Header / Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50">
-      <nav id="navbar" class="transition-colors duration-300">
-        <div
-          class="container mx-auto px-6 py-4 flex items-center justify-between"
-        >
-          <a href="#home" class="flex items-center gap-3">
-            <div
-              class="w-9 h-9 rounded-xl bg-gradient-to-tr from-accent to-secondary grid place-items-center shadow-glow"
-            >
-              <i class="fa-solid fa-code text-white"></i>
-            </div>
-            <span class="text-xl font-semibold tracking-wide">ACSES</span>
-          </a>
 
-          <div class="hidden md:flex items-center gap-6">
-            <a href="#home" class="js-nav-link nav-link">Home</a>
-            <a href="#about" class="js-nav-link nav-link">About</a>
-            <a href="#team" class="js-nav-link nav-link">Team</a>
-            <a href="#events" class="js-nav-link nav-link">Events</a>
-            <a href="#benefits" class="js-nav-link nav-link">Benefits</a>
-            <a href="#join" class="js-nav-link nav-link">Join</a>
-            <a href="#contact" class="js-nav-link nav-link">Contact</a>
 
-            <!-- <button
-            id="toggleTheme"
-            class="w-10 h-10 grid place-items-center rounded-xl glass hover:scale-105 transition"
-            aria-label="Toggle theme"
-          >
-            <i class="fa-solid fa-moon"></i>
-          </button> -->
-          </div>
-
-          <button
-            id="mobile-menu-button"
-            class="md:hidden w-11 h-11 grid place-items-center rounded-xl glass"
-            aria-label="Toggle menu"
-          >
-            <i class="fa-solid fa-bars"></i>
-          </button>
+<!-- Enhanced Header with Next-Level Mobile Menu -->
+<header class="fixed top-0 left-0 right-0 z-50">
+  <nav id="navbar" class="transition-colors duration-300 scrolled">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-accent to-secondary grid place-items-center shadow-glow">
+          <i class="fa-solid fa-code text-white"></i>
         </div>
+        <span class="text-xl font-semibold tracking-wide">ACSES</span>
+      </a>
 
-        <div
-          id="mobile-menu"
-          class="md:hidden bg-ink/70 backdrop-blur-xl border-t border-white/10"
-          aria-hidden="true"
-        >
-          <div class="container mx-auto px-6 py-2 flex flex-col">
-            <a class="block py-3 hover:text-highlight/90 transition" href="#"
-              >Home</a
-            >
-            <a
-              class="block py-3 hover:text-highlight/90 transition"
-              href="#about"
-              >About</a
-            >
-            <a
-              class="block py-3 hover:text-highlight/90 transition"
-              href="#team"
-              >Team</a
-            >
-            <a
-              class="block py-3 hover:text-highlight/90 transition"
-              href="#events"
-              >Events</a
-            >
-            <a
-              class="block py-3 hover:text-highlight/90 transition"
-              href="#benefits"
-              >Benefits</a
-            >
-            <a
-              class="block py-3 hover:text-highlight/90 transition"
-              href="#join"
-              >Join</a
-            >
-            <a
-              class="block py-3 hover:text-highlight/90 transition"
-              href="#contact"
-              >Contact</a
-            >
-            <!-- <button id="toggleThemeM" class="w-full py-3 rounded-xl glass mt-2">Toggle Theme</button> -->
-          </div>
+      <!-- Desktop Menu (unchanged) -->
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#home" class="js-nav-link nav-link">Home</a>
+        <a href="#about" class="js-nav-link nav-link">About</a>
+        <a href="#team" class="js-nav-link nav-link">Team</a>
+        <a href="#events" class="js-nav-link nav-link">Events</a>
+        <a href="#benefits" class="js-nav-link nav-link">Benefits</a>
+        <a href="#join" class="js-nav-link nav-link">Join</a>
+        <a href="#contact" class="js-nav-link nav-link">Contact</a>
+      </div>
+
+      <!-- Next-Level Mobile Menu Button -->
+      <button id="mobile-menu-button" class="md:hidden relative z-50 hamburger-button" aria-label="Toggle menu">
+        <div class="hamburger-box">
+          <div class="hamburger-inner"></div>
         </div>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Next-Level Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+    <!-- Background Effects -->
+    <div class="menu-background">
+      <div class="gradient-orbs"></div>
+      <div class="floating-particles"></div>
+      <div class="mesh-pattern"></div>
+    </div>
+
+    <!-- Menu Content -->
+    <div class="menu-content">
+      <!-- Menu Header -->
+      <div class="menu-header">
+        <div class="menu-logo">
+          <div class="logo-icon">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <span class="logo-text">ACSES</span>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="menu-navigation">
+        <a href="#home" class="menu-link" data-text="Home">
+          <span class="menu-link-icon"><i class="fa-solid fa-home"></i></span>
+          <span class="menu-link-text">Home</span>
+          <span class="menu-link-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <a href="#about" class="menu-link" data-text="About">
+          <span class="menu-link-icon"><i class="fa-solid fa-info-circle"></i></span>
+          <span class="menu-link-text">About</span>
+          <span class="menu-link-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <a href="#team" class="menu-link" data-text="Team">
+          <span class="menu-link-icon"><i class="fa-solid fa-users"></i></span>
+          <span class="menu-link-text">Team</span>
+          <span class="menu-link-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <a href="#events" class="menu-link" data-text="Events">
+          <span class="menu-link-icon"><i class="fa-solid fa-calendar"></i></span>
+          <span class="menu-link-text">Events</span>
+          <span class="menu-link-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <a href="#benefits" class="menu-link" data-text="Benefits">
+          <span class="menu-link-icon"><i class="fa-solid fa-star"></i></span>
+          <span class="menu-link-text">Benefits</span>
+          <span class="menu-link-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <a href="#join" class="menu-link" data-text="Join">
+          <span class="menu-link-icon"><i class="fa-solid fa-plus"></i></span>
+          <span class="menu-link-text">Join</span>
+          <span class="menu-link-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <a href="#contact" class="menu-link" data-text="Contact">
+          <span class="menu-link-icon"><i class="fa-solid fa-envelope"></i></span>
+          <span class="menu-link-text">Contact</span>
+          <span class="menu-link-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
       </nav>
-    </header>
+
+      <!-- Menu Footer
+      <div class="menu-footer">
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </div> -->
+        <p class="menu-tagline">Empowering the next generation of tech leaders</p>
+      </div>
+    </div>
+  
+</header>
+
 
     <!-- Hero Section -->
     <section
@@ -726,14 +339,16 @@ svg {
               <span
                 class="text-base sm:text-lg md:text-m font-semibold text-white uppercase tracking-wide"
               >
-                Association of Computer Science and Engineering Students
+                Building the next generation of tech leaders
               </span>
             </div>
             <h1
               class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-snug max-w-full"
             >
-              Building the next generation of
-              <span class="text-gradient">tech leaders</span>
+              
+                Association of  
+              <span class="text-gradient">Computer Science </span> and Engineering Students
+              <!-- <Engineering class="text-gradient">Engineering Students</span>  -->
             </h1>
             <p
               class="mt-5 text-white/80 text-base sm:text-lg md:text-xl max-w-xl"
@@ -795,7 +410,7 @@ svg {
             class="rounded-xl w-full h-auto max-h-[60vh] object-cover"
           ></video> -->
             <img
-              src="team_img.jpg"
+              src="assets/images/team_img.jpg"
               alt=""
               class="rounded-xl object-cover w-full h-[260px] sm:h-[320px] md:h-[360px]"
             />
@@ -819,143 +434,212 @@ svg {
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="pt-24 pb-24 px-4 sm:px-6 lg:px-8">
-      <div
-        class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center max-w-7xl"
-      >
-        <div class="reveal">
-          <div class="inline-flex items-center gap-2 mb-4 max-w-xs">
-            <span class="w-1.5 h-6 bg-highlight rounded-full"></span>
-            <span class="uppercase tracking-widest text-sm text-white/60"
-              >About ACSES</span
-            >
-          </div>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold max-w-full">
-            A community where learning meets opportunity
-          </h2>
-          <p class="mt-4 text-white/80 max-w-full">
-            Since 2010, ACSES has bridged academics and industry with hands-on
-            programs, mentorship, and career pathways that accelerate growth.
-          </p>
-          <div class="mt-8 grid grid-cols-2 gap-4 max-w-full">
-            <div class="glass p-5 rounded-xl card-3d">
-              <div class="text-xl sm:text-2xl font-bold text-highlight">
-                2010
-              </div>
-              <div class="text-white/70 text-sm">Founded</div>
-            </div>
-            <div class="glass p-5 rounded-xl card-3d">
-              <div class="text-xl sm:text-2xl font-bold text-highlight">
-                2,000+
-              </div>
-              <div class="text-white/70 text-sm">Members</div>
-            </div>
-            <div class="glass p-5 rounded-xl card-3d">
-              <div class="text-xl sm:text-2xl font-bold text-highlight">
-                250+
-              </div>
-              <div class="text-white/70 text-sm">Alumni mentors</div>
-            </div>
-            <div class="glass p-5 rounded-xl card-3d">
-              <div class="text-xl sm:text-2xl font-bold text-highlight">
-                100%
-              </div>
-              <div class="text-white/70 text-sm">Inclusive & open</div>
-            </div>
-          </div>
+<!-- Clean About Section -->
+<section id="about" class="pt-24 pb-24 px-4 sm:px-6 lg:px-8">
+  <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl">
+    
+    <!-- Left Side - Story -->
+    <div class="reveal">
+      <div class="inline-flex items-center gap-2 mb-6">
+        <span class="w-1.5 h-6 bg-highlight rounded-full"></span>
+        <span class="uppercase tracking-widest text-sm text-white/60">About ACSES</span>
+      </div>
+      
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        A community where learning meets opportunity
+      </h2>
+      
+      <p class="text-white/80 text-lg mb-8 leading-relaxed">
+        Since 2010, ACSES has bridged academics and industry with hands-on programs, 
+        mentorship, and career pathways that accelerate growth for passionate developers 
+        and innovators.
+      </p>
+
+      <!-- Simple Stats -->
+      <div class="stats-row grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="stat-box text-center">
+          <div class="stat-number text-2xl font-bold text-highlight mb-1" data-target="2010">2010</div>
+          <div class="stat-label text-white/60 text-sm">Founded</div>
         </div>
-        <div class="reveal">
-          <div
-            class="relative glass p-6 rounded-2xl max-w-full overflow-hidden"
-          >
-            <img
-              src="acses_img.jpg"
-              alt="Students collaborating"
-              class="rounded-xl object-cover w-full h-[260px] sm:h-[320px] md:h-[360px]"
-            />
-            <div
-              class="absolute inset-0 rounded-xl ring-1 ring-white/10 pointer-events-none"
-            ></div>
+        <div class="stat-box text-center">
+          <div class="stat-number text-2xl font-bold text-highlight mb-1" data-target="2000">0</div>
+          <div class="stat-label text-white/60 text-sm">Members</div>
+        </div>
+        <div class="stat-box text-center">
+          <div class="stat-number text-2xl font-bold text-highlight mb-1" data-target="250">0</div>
+          <div class="stat-label text-white/60 text-sm">Mentors</div>
+        </div>
+        <div class="stat-box text-center">
+          <div class="stat-number text-2xl font-bold text-highlight mb-1" data-target="50">0</div>
+          <div class="stat-label text-white/60 text-sm">Events/Year</div>
+        </div>
+      </div>
+
+      <!-- Mission -->
+      <div class="mission-box glass p-6 rounded-2xl border-l-4 border-highlight">
+        <h3 class="text-lg font-semibold text-white mb-3">Our Mission</h3>
+        <p class="text-white/70">
+          To empower students with practical skills, industry connections, and innovative 
+          thinking that transforms their academic journey into successful tech careers.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Side - Visual -->
+    <div class="reveal">
+      <div class="about-visual glass p-8 rounded-3xl relative">
+        <!-- Main Image -->
+        <div class="mb-6">
+          <img
+            src="acses_img.jpg"
+            alt="ACSES Community"
+            class="rounded-2xl object-cover w-full h-64 hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+
+        <!-- Key Highlights -->
+        <div class="highlights space-y-4">
+          <div class="highlight-item flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300">
+            <div class="highlight-icon w-12 h-12 rounded-full bg-gradient-to-r from-highlight to-accent flex items-center justify-center">
+              <i class="fa-solid fa-code text-ink"></i>
+            </div>
+            <div>
+              <div class="text-white font-medium">Technical Excellence</div>
+              <div class="text-white/60 text-sm">Workshops, hackathons, and hands-on projects</div>
+            </div>
+          </div>
+
+          <div class="highlight-item flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300">
+            <div class="highlight-icon w-12 h-12 rounded-full bg-gradient-to-r from-accent to-secondary flex items-center justify-center">
+              <i class="fa-solid fa-users text-white"></i>
+            </div>
+            <div>
+              <div class="text-white font-medium">Community Support</div>
+              <div class="text-white/60 text-sm">Peer learning and alumni mentorship</div>
+            </div>
+          </div>
+
+          <div class="highlight-item flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-all duration-300">
+            <div class="highlight-icon w-12 h-12 rounded-full bg-gradient-to-r from-secondary to-primary flex items-center justify-center">
+              <i class="fa-solid fa-briefcase text-white"></i>
+            </div>
+            <div>
+              <div class="text-white font-medium">Career Growth</div>
+              <div class="text-white/60 text-sm">Industry connections and job placement</div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- Team Section -->
-    <section id="team" class="pt-24 pb-24 px-4 sm:px-6 lg:px-8">
-      <div class="container mx-auto max-w-7xl">
-        <div class="reveal text-center max-w-2xl mx-auto">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold">
-            Leadership & Guilds
-          </h2>
-          <p class="mt-3 text-white/70 max-w-full">
-            Meet the people organizing, engineering, and delivering impact
-            across ACSES.
-          </p>
-        </div>
 
-        <div
-          id="team-container"
-          class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-full"
-        ></div>
+<!-- Individual Team Cards Section -->
+<section id="team" class="pt-24 pb-24 px-4 sm:px-6 lg:px-8">
+  <div class="container mx-auto max-w-7xl">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 mb-4">
+        <span class="w-2 h-8 bg-highlight rounded-full"></span>
+        <span class="text-sm uppercase tracking-widest text-white/60">Meet Our Team</span>
       </div>
-    </section>
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
+        <span class="text-gradient">ACSES</span> Team
+      </h2>
+      <p class="text-white/70 text-lg max-w-2xl mx-auto">
+        The passionate individuals who make ACSES a thriving community of innovation and learning.
+      </p>
+    </div>
 
-    <!-- Events Section -->
-    <section id="events" class="pt-24 pb-24 px-4 sm:px-6 lg:px-8">
-      <div class="container mx-auto max-w-7xl">
-        <div
-          class="reveal flex flex-wrap items-end justify-between gap-4 max-w-full"
-        >
-          <div>
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold max-w-full">
-              Events & Experiences
-            </h2>
-            <p class="mt-2 text-white/70 max-w-full">
-              From hackathons to career fairs—discover what’s next.
-            </p>
-          </div>
-          <a
-            href="#join"
-            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl glass hover:scale-[1.02] transition whitespace-nowrap"
-          >
-            Get Involved <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
+    <!-- Individual Team Cards Grid -->
+    <div id="team-container" class="team-grid"></div>
+  </div>
+</section>
 
-        <div class="mt-10 max-w-full">
-          <h3
-            class="text-lg sm:text-xl font-semibold text-white/80 mb-4 max-w-full"
-          >
-            Upcoming
-          </h3>
-          <div
-            id="upcoming-events-container"
-            class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-full"
-          ></div>
-        </div>
-        <br /><br />
-        <div class="mt-12 max-w-full">
-          <h3
-            class="text-lg sm:text-xl font-semibold text-white/80 mb-4 max-w-full"
-          >
-            Past Highlights
-          </h3>
-          <div
-            id="past-events-container"
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-full"
-          ></div>
-        </div>
+
+
+
+<!-- Events Section (Update the existing one) -->
+<section id="events" class="pt-24 pb-24 px-4 sm:px-6 lg:px-8">
+  <div class="container mx-auto max-w-7xl">
+    <div class="reveal flex flex-wrap items-end justify-between gap-4 max-w-full">
+      <div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold max-w-full">
+         <span class="text-gradient">Events</span>  & Experiences
+        </h2>
+        <p class="mt-2 text-white/70 max-w-full">
+          From hackathons to career fairs—discover what's next.
+        </p>
       </div>
-    </section>
+      <a href="#join" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl glass hover:scale-[1.02] transition whitespace-nowrap">
+        Get Involved <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="mt-10 max-w-full">
+      <h3 class="text-lg sm:text-xl font-semibold text-white/80 mb-4 max-w-full">
+        Upcoming
+      </h3>
+      <div id="upcoming-events-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-full"></div>
+    </div>
+    
+    <br><br>
+    
+    <div class="mt-12 max-w-full">
+      <h3 class="text-lg sm:text-xl font-semibold text-white/80 mb-4 max-w-full">
+        Past Highlights
+      </h3>
+      <div id="past-events-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-full"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Event Modal - Add this before </body> -->
+<div id="event-modal" class="event-modal hidden">
+  <div class="modal-overlay"></div>
+  <div class="modal-card">
+    <button class="modal-close" id="modal-close">
+      <i class="fa-solid fa-times"></i>
+    </button>
+    
+    <div class="modal-content">
+      <!-- Image Slideshow Section -->
+      <div class="slideshow-container">
+        <div class="slideshow-wrapper">
+          <div class="slides-track" id="slides-track"></div>
+        </div>
+        
+        <!-- Slideshow Navigation -->
+        <button class="slide-nav slide-prev" id="slide-prev">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="slide-nav slide-next" id="slide-next">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        
+        <!-- Slide Indicators -->
+        <div class="slide-indicators" id="slide-indicators"></div>
+      </div>
+      
+      <!-- Event Details Section -->
+      <div class="modal-details">
+        <h2 class="modal-title" id="modal-title"></h2>
+        <div class="modal-date" id="modal-date"></div>
+        <div class="modal-description" id="modal-description"></div>
+        <div class="modal-highlights" id="modal-highlights"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <!-- Benefits Section -->
     <section id="benefits" class="pt-24 pb-24 px-4 sm:px-6 lg:px-8">
       <div class="container mx-auto max-w-7xl">
         <div class="reveal text-center max-w-2xl mx-auto max-w-full">
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold max-w-full">
-            Why Join ACSES?
+            Why Join <span class="text-gradient">ACSES</span> ?
           </h2>
           <p class="mt-2 text-white/70 max-w-full">
             Learn faster, build stronger, and grow together—with support at
@@ -1023,7 +707,7 @@ svg {
       <div class="container mx-auto max-w-3xl">
         <div class="glass p-8 rounded-2xl reveal max-w-full text-center">
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
-            Join ACSES
+            Join <span class="text-gradient">ACSES</span> 
           </h2>
           <p class="mt-2 text-white/70 mb-8">
             Become a member of our student community by filling our official
@@ -1179,372 +863,6 @@ svg {
     </footer>
 
     <!-- JavaScript -->
-    <script>
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loader');
-  if (!loader) return;
-
-  // Wait for the full animation sequence to complete
-  setTimeout(() => {
-    // Add gentle final enhancement before fade out
-    loader.style.animation = 'final-enhance 0.6s ease-in-out';
-    
-    setTimeout(() => {
-      loader.style.transition = 'opacity 1s ease, transform 1s ease';
-      loader.style.opacity = '0';
-      loader.style.transform = 'scale(0.96)';
-
-      setTimeout(() => {
-        if (loader.parentNode) {
-          loader.parentNode.removeChild(loader);
-        }
-      }, 1100);
-    }, 600);
-  }, 6500);
-});
-
-// Add gentle final enhancement animation
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes final-enhance {
-    0%, 100% { 
-      filter: brightness(1) saturate(1); 
-    }
-    50% { 
-      filter: brightness(1.1) saturate(1.1) 
-              drop-shadow(0 0 12px rgba(255, 255, 255, 0.15)) 
-              drop-shadow(0 0 8px rgba(255, 211, 78, 0.3)); 
-    }
-  }
-`;
-document.head.appendChild(style);
-
-
-
-
-
-      // Update footer year
-      document.getElementById("year").textContent = new Date().getFullYear();
-
-      // Active nav
-      const sections = Array.from(document.querySelectorAll("section[id]"));
-      const navLinks = Array.from(document.querySelectorAll(".js-nav-link"));
-      function setActiveNav() {
-        let scroll = window.scrollY + 85;
-        let currentSection = sections[0];
-        for (const section of sections) {
-          if (section.offsetTop <= scroll) currentSection = section;
-        }
-        navLinks.forEach((link) => {
-          link.classList.remove("active-nav");
-          if (link.getAttribute("href") === "#" + currentSection.id) {
-            link.classList.add("active-nav");
-          }
-        });
-      }
-      window.addEventListener("scroll", setActiveNav);
-      window.addEventListener("DOMContentLoaded", setActiveNav);
-
-      // Navbar scroll background toggle
-      const navbar = document.getElementById("navbar");
-      window.addEventListener("scroll", () => {
-        navbar.classList.toggle("scrolled", window.scrollY > 24);
-      });
-
-      // Mobile menu toggle
-      const mobileBtn = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
-      if (mobileBtn) {
-        mobileBtn.addEventListener("click", () => {
-          mobileMenu.classList.toggle("open");
-          mobileMenu.setAttribute(
-            "aria-hidden",
-            mobileMenu.classList.contains("open") ? "false" : "true"
-          );
-        });
-      }
-
-      // IntersectionObserver for reveal anims
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("in");
-              io.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.15 }
-      );
-      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-
-      // Smooth scroll + close menu
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", (e) => {
-          const id = anchor.getAttribute("href");
-          if (id.length > 1) {
-            e.preventDefault();
-            const el = document.querySelector(id);
-            if (el)
-              window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
-            mobileMenu.classList.remove("open");
-            mobileMenu.setAttribute("aria-hidden", "true");
-          }
-        });
-      });
-
-      // Team data array
-      const teamData = [
-        {
-          category: "Mentor",
-          members: [
-            {
-              name: "Prof.S.R. Sagare",
-              role: "Mentor",
-              photo: "https://example.com/photos/mahaveer.jpg",
-            },
-          ],
-        },
-        {
-          category: "President",
-          members: [
-            {
-              name: "Mr. Mahaveer Daga",
-              role: "President",
-              photo: "https://example.com/photos/mahaveer.jpg",
-            },
-          ],
-        },
-        {
-          category: "Vice-President",
-          members: [
-            { name: "Ms. Pramila Patil", role: "Vice-President" },
-            { name: "Mr. Ashish Andhale", role: "Vice-President" },
-          ],
-        },
-
-        {
-          category: "Treasurer",
-          members: [
-            { name: "Ms. Devyani Patil", role: "Treasurer" },
-            { name: "Mr. Mehbub Mulla", role: "Treasurer" },
-          ],
-        },
-        {
-          category: "Secretary",
-          members: [
-            { name: "Ms. Archita Jalan", role: "Secretary" },
-            { name: "Mr. Yash Kanire", role: "Secretary" },
-            { name: "Ms. Samruddhi Patil", role: "Secretary" },
-          ],
-        },
-        {
-          category: "Technical Head",
-          members: [
-            {
-              name: "Mr. Parshv Athane",
-              photo:
-                "https://media.licdn.com/dms/image/v2/D4D03AQFgWj2klKbAhQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729779732871?e=1755734400&v=beta&t=h7trhQ0-zgZaIJMp6MIqeaLSnqfiGaTtoEhnbgMDsos",
-            },
-            { name: "Ms. Payal Shahapure", role: "Technical Head" },
-            { name: "Ms. Mrudula Waichal", role: "Technical Head" },
-            { name: "Ms. Sejal Mali", role: "Technical Head" },
-            { name: "Ms. Sakshi Kamble", role: "Technical Head" },
-          ],
-        },
-        {
-          category: "Event Head",
-          members: [
-            { name: "Mr. Mrudul Deshmukh", role: "Event Head" },
-            { name: "Mr. Samarth Navale", role: "Event Head" },
-            { name: "Mr. Yash Vasagadekar", role: "Event Head" },
-            { name: "Mr. Viraj Kadam", role: "Event Head" },
-          ],
-        },
-        {
-          category: "Social Media & Marketing",
-          members: [
-            { name: "Mr. Rajvardhan Kadam", role: "Social Media Manager" },
-            { name: "Mr. Shrutik Khurape", role: "Marketing Head" },
-            { name: "Mr. Sammed Kanwade", role: "Content Creator" },
-            { name: "Mr. Ajay Desai", role: "Digital Marketer" },
-          ],
-        },
-        {
-          category: "Data Manager",
-          members: [
-            { name: "Ms. Gayatri Waskar", role: "Data Manager" },
-            { name: "Ms. Sakshi Deshmukh", role: "Data Analyst" },
-            { name: "Ms. Sanika Patil", role: "Database Administrator" },
-            { name: "Ms. Isha Marathe", role: "Data Coordinator" },
-          ],
-        },
-      ];
-
-      // Render Team section
-      const teamContainer = document.getElementById("team-container");
-      teamData.forEach((group, index) => {
-        const card = document.createElement("div");
-        card.className = "glass p-6 rounded-2xl card-3d reveal team-card";
-        card.style.transitionDelay = index * 60 + "ms";
-
-        // Generate member cards with initials avatar
-        const membersHTML = group.members
-          .map((member) => {
-            const photoUrl = member.photo || "default-avatar.png";
-            return `
-      <div class="flex items-center gap-2 p-3 rounded-xl hover:bg-white/5 transition">
-        <img src="${photoUrl}" alt="${member.name}" class="w-40 h-40 rounded-full object-cover" />
-        <div>
-          <div class="font-medium text-lg">${member.name}</div>
-        </div>
-      </div>
-    `;
-          })
-          .join("");
-
-        card.innerHTML = `
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <h3 class="text-lg font-semibold">${group.category}</h3>
-          
-        </div>
-        <div class="mt-4 divide-y divide-white/10">${membersHTML}</div>
-      `;
-        teamContainer.appendChild(card);
-      });
-
-      // Event Data
-      const pastEvents = [
-        {
-          title: "Annual Hackathon 2024",
-          description:
-            "36-hour coding marathon with mentors and $7,000 in prizes.",
-          date: "Mar 2024",
-          image:
-            "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1400&auto=format&fit=crop",
-        },
-        {
-          title: "AI Workshop Series",
-          description:
-            "Machine learning fundamentals to applications in 4 weeks.",
-          date: "Nov 2024",
-          image:
-            "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1400&auto=format&fit=crop",
-        },
-        {
-          title: "Tech Career Fair",
-          description:
-            "Meet recruiters from 25+ tech companies across domains.",
-          date: "Aug 2024",
-          image:
-            "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop",
-        },
-      ];
-
-      const upcomingEvents = [
-        {
-          title: "Cloud Computing Workshop",
-          description: "AWS + Azure fundamentals with hands-on labs.",
-          date: "Oct 28, 2025",
-          image:
-            "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1400&auto=format&fit=crop",
-          isHighlighted: true,
-        },
-        {
-          title: "Interview Prep Sessions",
-          description: "Mock interviews and behavioral prep with alumni.",
-          date: "Nov 5, 2025",
-          image:
-            "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1400&auto=format&fit=crop",
-          isHighlighted: false,
-        },
-      ];
-
-      // Render upcoming
-      const upcomingContainer = document.getElementById(
-        "upcoming-events-container"
-      );
-      upcomingEvents.forEach((event, index) => {
-        const eventCard = document.createElement("div");
-        eventCard.className = `relative overflow-hidden rounded-2xl glass card-3d reveal upcoming-card ${
-          event.isHighlighted ? "ring-2 ring-highlight/60 shadow-glow" : ""
-        }`;
-
-        eventCard.style.transitionDelay = index * 80 + "ms";
-        eventCard.innerHTML = `
-        <div class="relative">
-          <img
-            class="w-full h-52 sm:h-56 md:h-60 object-cover"
-            src="${event.image}"
-            alt="${event.title}"
-          />
-          ${
-            event.isHighlighted
-              ? '<div class="absolute top-4 left-4 px-3 py-1 text-xs rounded-full bg-highlight text-ink font-bold">Next Event</div>'
-              : ""
-          }
-        </div>
-        <div class="p-6">
-          <h4 class="text-xl font-semibold">${event.title}</h4>
-          <p class="text-white/70 mt-1">${event.description}</p>
-          <div class="mt-3 text-white/60 text-sm">
-            <i class="fa-regular fa-calendar-days mr-2"></i>${event.date}
-          </div>
-        </div>
-      `;
-        upcomingContainer.appendChild(eventCard);
-      });
-
-      // Render past
-      const pastContainer = document.getElementById("past-events-container");
-      pastEvents.forEach((event, index) => {
-        const eventCard = document.createElement("div");
-        eventCard.className =
-          "overflow-hidden rounded-2xl glass card-3d reveal past-card";
-        eventCard.style.transitionDelay = index * 80 + "ms";
-        eventCard.innerHTML = `
-        <div class="relative group">
-          <img
-            class="w-full h-40 sm:h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-            src="${event.image}"
-            alt="${event.title}"
-          />
-        </div>
-        <div class="p-5">
-          <h4 class="font-semibold">${event.title}</h4>
-          <p class="text-white/70 text-sm mt-1">${event.description}</p>
-          <div class="mt-2 text-white/60 text-xs">
-            <i class="fa-regular fa-calendar mr-2"></i>${event.date}
-          </div>
-        </div>
-      `;
-        pastContainer.appendChild(eventCard);
-      });
-
-      // Email validation regex
-      const emailRegex = /\S+@\S+\.\S+/;
-
-      // Contact form submission
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", (e) => {
-          e.preventDefault();
-          const emailInput = document.getElementById("contact-email");
-          const emailError = document.getElementById("contact-email-error");
-          if (!emailRegex.test(emailInput.value)) {
-            emailError.classList.remove("hidden");
-            emailInput.focus();
-            return;
-          }
-          emailError.classList.add("hidden");
-          alert("Thanks for reaching out! We’ll respond as soon as possible.");
-          e.target.reset();
-        });
-
-      // Ensure reveal elements are visible immediately to avoid blank sections
-      document
-        .querySelectorAll(".reveal")
-        .forEach((el) => el.classList.add("in"));
-    </script>
+   <script src="assets/js/main.js"></script>
   </body>
 </html>
