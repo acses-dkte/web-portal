@@ -841,73 +841,74 @@ upcomingEvents.forEach((event, index) => {
 const pastEventsWithGallery = [
   {
     id: 'hackathon-2024',
-    title: "Annual Hackathon 2024",
-    description: "36-hour coding marathon with mentors and $7,000 in prizes.",
-    date: "Mar 15-17, 2024",
-    coverImage: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1400&auto=format&fit=crop",
+    title: "Freshers Party",
+    description: "Welcoming the new Tech Enthusiastics In College.",
+    date: "Jan 2025",
+    coverImage: "https://i.postimg.cc/hGy6cXWN/Freshers.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop"
+      "https://i.postimg.cc/hGy6cXWN/Freshers.jpg",
+      // "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1400&auto=format&fit=crop",
+      // "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1400&auto=format&fit=crop",
+      // "https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=1400&auto=format&fit=crop",
+      // "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=1400&auto=format&fit=crop",
+      // "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop"
     ],
-    fullDescription: "Our Annual Hackathon 2024 was a spectacular 36-hour coding marathon that brought together over 200 passionate developers, designers, and innovators from across the region. The event featured intensive coding sessions, expert mentorship, and collaborative problem-solving that pushed the boundaries of creativity and technical excellence.",
+    fullDescription: `Step into the world of fun, music, and celebration!
+The Fresher’s Party is here to welcome our new batch with open arms, creating memories that last a lifetime. An evening filled with dazzling performances, exciting games, groovy dance moves, and loads of laughter awaits you.
+
+Get ready to break the ice, make new friends, and kickstart your college journey in the most happening way. Dress to impress, bring your energy, and let’s celebrate the beginning of a brand-new chapter!`,
     highlights: [
-      "200+ participants from 15+ colleges",
-      "24 expert mentors from top tech companies",
-      "$7,000 in total prizes distributed",
-      "12 winning projects across 4 categories",
-      "Live workshops on AI/ML, Web3, and Cloud Computing",
-      "Networking sessions with industry professionals"
+      "200+ participants from 1st, 2nd, 3rd students from our colleges",
+      "Warm Welcome to the Freshers",
+      "Testy Food",
+      "Full on Enjoyment"
     ]
   },
   {
     id: 'ai-workshop-2024',
-    title: "AI Workshop Series",
-    description: "Machine learning fundamentals to applications in 4 weeks.",
+    title: "Inauguration Ceremony",
+    description: "Starting new chapter of the ACSES.",
     date: "Nov 5-26, 2024",
-    coverImage: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1400&auto=format&fit=crop",
+    coverImage: "https://i.postimg.cc/MpPmG4tr/Inoguration.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1400&auto=format&fit=crop"
+      "https://i.postimg.cc/MpPmG4tr/Inoguration.jpg",
+      // "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1400&auto=format&fit=crop",
+      // "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1400&auto=format&fit=crop",
+      // "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1400&auto=format&fit=crop",
+      // "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1400&auto=format&fit=crop"
     ],
-    fullDescription: "A comprehensive 4-week journey into the world of Artificial Intelligence and Machine Learning. From basic concepts to advanced applications, participants gained hands-on experience with popular frameworks and real-world projects.",
+    fullDescription: "The Fresher’s Party will begin with a grand Inauguration Ceremony, marking the start of an exciting evening filled with joy, energy, and celebration. The ceremony aims to warmly welcome the new batch and set a vibrant tone for their journey ahead.",
     highlights: [
-      "150+ students completed the full series",
-      "Hands-on projects with TensorFlow and PyTorch",
-      "Guest lectures from AI researchers",
-      "Certificate of completion awarded",
-      "Final project showcase with live demos",
-      "Career guidance in AI/ML field"
+      "Lighting of the Lamp",
+      "Welcome Speech",
+      "Chief Guest Address",
+      "Cultural Performances",
+      "Fresher Introduction Session",
+      "Vote of Thanks"
     ]
   },
   {
     id: 'career-fair-2024',
-    title: "Tech Career Fair",
-    description: "Meet recruiters from 25+ tech companies across domains.",
+    title: "Tech-Nova 2.0",
+    description: "A National level event",
     date: "Aug 20, 2024",
-    coverImage: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop",
+    coverImage: "https://i.postimg.cc/7Y7LhT9v/Tech-Nova.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1400&auto=format&fit=crop"
+      "https://i.postimg.cc/QMvPFVSP/t1.jpg",
+      "https://i.postimg.cc/vBMr2smT/t2.jpg"
     ],
-    fullDescription: "Our largest career fair to date, connecting students with leading technology companies and startups. The event featured company booths, one-on-one interviews, resume reviews, and career counseling sessions.",
+    fullDescription: "Tech Nova is a thrilling national-level technical competition designed to challenge intellect, speed, and innovation. Participants will battle through multiple rounds, testing their problem-solving skills, technical knowledge, and creativity. Gear up for a journey where aptitude meets technology and brilliance leads to victory!",
     highlights: [
-      "25+ participating companies",
-      "300+ job openings across various roles",
-      "80+ on-spot interview rounds",
-      "Resume review sessions",
-      "Career counseling workshops",
-      "Networking lunch with industry professionals"
+      "National-Level Technical Event",
+      "Aptitude Quest – Round 1",
+      "Tech Challenge – Round 2",
+      "Exciting Cash Prizes & Certificates",
+      "Platform to Showcase Skills & Innovation",
+      "Opportunity to Compete with the Best Minds"
     ]
   }
 ];
+
 
 // Event Modal Class
 class EventModal {
@@ -1094,26 +1095,250 @@ document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
 
 
 
+// Enhanced Contact Form Handler - Add this to your existing website JS
 
-// Email validation regex
-const emailRegex = /\S+@\S+\.\S+/;
+class ContactFormHandler {
+  constructor() {
+    this.apiUrl = 'http://localhost:5000/api/contact/submit'; // Update with your API URL
+    this.form = document.getElementById('contact-form');
+   this.submitButton = document.querySelector('#contact-form button[type="submit"]');
+    this.messageDiv = document.getElementById('contact-message');
+    
+    this.init();
+  }
 
-// Contact form submission
-document
-  .getElementById("contact-form")
-  .addEventListener("submit", (e) => {
-    e.preventDefault();
-    const emailInput = document.getElementById("contact-email");
-    const emailError = document.getElementById("contact-email-error");
-    if (!emailRegex.test(emailInput.value)) {
-      emailError.classList.remove("hidden");
-      emailInput.focus();
+  init() {
+    if (this.form) {
+      this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+      this.addRealTimeValidation();
+    }
+  }
+
+  async handleSubmit(event) {
+    event.preventDefault();
+    
+    const formData = this.getFormData();
+    
+    if (!this.validateForm(formData)) {
       return;
     }
-    emailError.classList.add("hidden");
-    alert("Thanks for reaching out! We’ll respond as soon as possible.");
-    e.target.reset();
-  });
+
+    this.setLoading(true);
+
+    try {
+      const response = await fetch(`${this.apiUrl}/submit`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        this.showSuccess(result.message);
+        this.form.reset();
+        this.trackSuccess(formData);
+      } else {
+        this.showError(result.message || 'Submission failed');
+        this.displayValidationErrors(result.details);
+      }
+
+    } catch (error) {
+      console.error('Contact form error:', error);
+      this.showError('Network error. Please check your connection and try again.');
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+getFormData() {
+  return {
+    name: document.getElementById('contact-name')?.value.trim() || '',
+    email: document.getElementById('contact-email')?.value.trim() || '',
+    subject: document.getElementById('subject') ? document.getElementById('subject').value.trim() : '',
+    phone: document.getElementById('phone') ? document.getElementById('phone').value.trim() : '',
+    message: document.getElementById('message')?.value.trim() || ''
+  };
+}
+
+
+
+validateForm(data) {
+  const errors = [];
+
+  if (!data.name || data.name.length < 2) {
+    errors.push('Please enter a valid name (at least 2 characters)');
+  }
+
+  if (!data.email || !this.isValidEmail(data.email)) {
+    errors.push('Please enter a valid email address');
+  }
+
+  // Only validate subject if it exists (non-empty string)
+  if (data.subject !== undefined && data.subject !== null) {
+    if (!data.subject || data.subject.length < 5) {
+      errors.push('Please enter a subject (at least 5 characters)');
+    }
+  }
+
+  if (!data.message || data.message.length < 20) {
+    errors.push('Please enter a message (at least 20 characters)');
+  }
+
+  // Only validate phone if it exists and is non-empty
+  if (data.phone !== undefined && data.phone !== null && data.phone !== '') {
+    if (!this.isValidPhone(data.phone)) {
+      errors.push('Please enter a valid phone number');
+    }
+  }
+
+  if (errors.length > 0) {
+    this.showError('Please correct the following errors:\n• ' + errors.join('\n• '));
+    return false;
+  }
+
+  return true;
+}
+
+
+  isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  isValidPhone(phone) {
+    return /^[\d\s\-\+\(\)]{10,20}$/.test(phone);
+  }
+setLoading(isLoading) {
+  if (!this.submitButton) return;
+
+  this.submitButton.disabled = isLoading;
+  this.submitButton.innerHTML = isLoading 
+    ? '<i class="fa-solid fa-spinner fa-spin"></i> Sending...'
+    : 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+}
+
+  showSuccess(message) {
+    this.messageDiv.className = 'contact-message success';
+    this.messageDiv.innerHTML = `
+      <i class="fa-solid fa-check-circle"></i>
+      <span>${message}</span>
+    `;
+    this.messageDiv.style.display = 'block';
+    
+    setTimeout(() => {
+      this.messageDiv.style.display = 'none';
+    }, 10000);
+  }
+
+  showError(message) {
+    this.messageDiv.className = 'contact-message error';
+    this.messageDiv.innerHTML = `
+      <i class="fa-solid fa-exclamation-triangle"></i>
+      <span>${message}</span>
+    `;
+    this.messageDiv.style.display = 'block';
+  }
+
+  displayValidationErrors(errors) {
+    if (!errors) return;
+
+    errors.forEach(error => {
+      const field = this.form.querySelector(`[name="${error.field}"]`);
+      if (field) {
+        field.style.borderColor = '#ff4757';
+        field.classList.add('error');
+        
+        // Remove error styling after user starts typing
+        field.addEventListener('input', () => {
+          field.style.borderColor = '';
+          field.classList.remove('error');
+        }, { once: true });
+      }
+    });
+  }
+
+  addRealTimeValidation() {
+    const inputs = this.form.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('blur', () => this.validateField(input));
+    });
+  }
+
+  validateField(field) {
+    const value = field.value.trim();
+    let isValid = true;
+    let message = '';
+
+    switch (field.name) {
+      case 'name':
+        isValid = value.length >= 2;
+        message = 'Name must be at least 2 characters';
+        break;
+      case 'email':
+        isValid = this.isValidEmail(value);
+        message = 'Please enter a valid email address';
+        break;
+      case 'phone':
+        isValid = !value || this.isValidPhone(value);
+        message = 'Please enter a valid phone number';
+        break;
+      case 'subject':
+        isValid = value.length >= 5;
+        message = 'Subject must be at least 5 characters';
+        break;
+      case 'message':
+        isValid = value.length >= 20;
+        message = 'Message must be at least 20 characters';
+        break;
+    }
+
+    if (!isValid) {
+      this.showFieldError(field, message);
+    } else {
+      this.clearFieldError(field);
+    }
+  }
+
+  showFieldError(field, message) {
+    field.style.borderColor = '#ff4757';
+    let errorDiv = field.parentNode.querySelector('.field-error');
+    
+    if (!errorDiv) {
+      errorDiv = document.createElement('div');
+      errorDiv.className = 'field-error';
+      field.parentNode.appendChild(errorDiv);
+    }
+    
+    errorDiv.textContent = message;
+    errorDiv.style.display = 'block';
+  }
+
+  clearFieldError(field) {
+    field.style.borderColor = '';
+    const errorDiv = field.parentNode.querySelector('.field-error');
+    if (errorDiv) {
+      errorDiv.style.display = 'none';
+    }
+  }
+
+  trackSuccess(formData) {
+    // Optional: Add analytics tracking
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'contact_form_submit', {
+        event_category: 'Contact',
+        event_label: formData.subject
+      });
+    }
+  }
+}
+
+// Initialize contact form handler
+document.addEventListener('DOMContentLoaded', () => {
+  new ContactFormHandler();
+});
+
 
 // Ensure reveal elements are visible immediately to avoid blank sections
 document

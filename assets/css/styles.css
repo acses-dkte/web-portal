@@ -2434,3 +2434,131 @@
         transform: scale(1.1);
         transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
+
+
+      /* Contact Form Basic Styles */
+#contact-form input,
+#contact-form textarea {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  outline: none;
+  border-color: #b13bff;
+  box-shadow: 0 0 10px #b13bffaa;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Button Style */
+.btn-magnetic {
+  position: relative;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  overflow: hidden;
+  border: none;
+  transition: background-position 0.3s ease;
+  background-size: 200% 100%;
+  background-position: left center;
+}
+
+.btn-magnetic:hover {
+  background-position: right center;
+}
+
+/* Shimmer effect inside button */
+.btn-magnetic .shimmer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -50%;
+  width: 50%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  animation: shimmer-animation 2.5s infinite;
+}
+
+@keyframes shimmer-animation {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* Loading spinner inside button */
+.fa-spinner.fa-spin {
+  margin-left: 0.5rem;
+}
+
+/* Contact message box for success/error */
+.contact-message {
+  margin-top: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  font-size: 1rem;
+  animation: slideDownFade 0.3s ease forwards;
+}
+
+.contact-message.success {
+  background-color: rgba(56, 161, 105, 0.15);
+  border: 1px solid rgba(56, 161, 105, 0.5);
+  color: #38a169;
+}
+
+.contact-message.error {
+  background-color: rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.5);
+  color: #dc2626;
+}
+
+.contact-message i {
+  font-size: 1.3rem;
+}
+
+/* Slide down + fade in animation */
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Inline field error messages */
+.field-error {
+  color: #f87171; /* Red-400 */
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* Error input style */
+input.error,
+textarea.error {
+  border-color: #f87171 !important;
+  box-shadow: 0 0 6px rgba(248, 113, 113, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  #contact-form input,
+  #contact-form textarea {
+    font-size: 0.9rem;
+  }
+
+  .contact-message {
+    font-size: 0.9rem;
+  }
+}
