@@ -1099,109 +1099,54 @@ document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
 
 class ContactFormHandler {
   constructor() {
-    this.apiUrl = 'http://localhost:5000/api/contact/submit'; // Update with your API URL
+    this.apiUrl = 'http://localhost:5000/api/contact'; // Update this if needed
     this.form = document.getElementById('contact-form');
-   this.submitButton = document.querySelector('#contact-form button[type="submit"]');
+    this.submitButton = this.form ? this.form.querySelector('button[type="submit"]') : null;
     this.messageDiv = document.getElementById('contact-message');
-    
     this.init();
   }
 
   init() {
-    if (this.form) {
-      this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-      this.addRealTimeValidation();
+    if (!this.form) return;
+    this.form.addEventListener('submit', e => this.handleSubmit(e));
+    this.addRealTimeValidation();
+  }
+
+  getFormData() {
+    return {
+      name: this.form.querySelector('[name="name"]').value.trim(),
+      email: this.form.querySelector('[name="email"]').value.trim(),
+      subject: this.form.querySelector('[name="subject"]').value.trim(),
+      phone: this.form.querySelector('[name="phone"]').value.trim(),
+      message: this.form.querySelector('[name="message"]').value.trim(),
+    };
+  }
+
+  validateForm(data) {
+    const errors = [];
+
+    if (!data.name || data.name.length < 2)
+      errors.push('Please enter a valid name (at least 2 characters).');
+
+    if (!data.email || !this.isValidEmail(data.email))
+      errors.push('Please enter a valid email address.');
+
+    if (!data.subject || data.subject.length < 5)
+      errors.push('Please enter a subject (at least 5 characters).');
+
+    if (!data.message || data.message.length < 20)
+      errors.push('Please enter a message (at least 20 characters).');
+
+    if (data.phone && !this.isValidPhone(data.phone))
+      errors.push('Please enter a valid phone number.');
+
+    if (errors.length) {
+      this.showError('Please fix the following errors:\n• ' + errors.join('\n• '));
+      return false;
     }
+
+    return true;
   }
-
-  async handleSubmit(event) {
-    event.preventDefault();
-    
-    const formData = this.getFormData();
-    
-    if (!this.validateForm(formData)) {
-      return;
-    }
-
-    this.setLoading(true);
-
-    try {
-      const response = await fetch(`${this.apiUrl}/submit`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        this.showSuccess(result.message);
-        this.form.reset();
-        this.trackSuccess(formData);
-      } else {
-        this.showError(result.message || 'Submission failed');
-        this.displayValidationErrors(result.details);
-      }
-
-    } catch (error) {
-      console.error('Contact form error:', error);
-      this.showError('Network error. Please check your connection and try again.');
-    } finally {
-      this.setLoading(false);
-    }
-  }
-
-getFormData() {
-  return {
-    name: document.getElementById('contact-name')?.value.trim() || '',
-    email: document.getElementById('contact-email')?.value.trim() || '',
-    subject: document.getElementById('subject') ? document.getElementById('subject').value.trim() : '',
-    phone: document.getElementById('phone') ? document.getElementById('phone').value.trim() : '',
-    message: document.getElementById('message')?.value.trim() || ''
-  };
-}
-
-
-
-validateForm(data) {
-  const errors = [];
-
-  if (!data.name || data.name.length < 2) {
-    errors.push('Please enter a valid name (at least 2 characters)');
-  }
-
-  if (!data.email || !this.isValidEmail(data.email)) {
-    errors.push('Please enter a valid email address');
-  }
-
-  // Only validate subject if it exists (non-empty string)
-  if (data.subject !== undefined && data.subject !== null) {
-    if (!data.subject || data.subject.length < 5) {
-      errors.push('Please enter a subject (at least 5 characters)');
-    }
-  }
-
-  if (!data.message || data.message.length < 20) {
-    errors.push('Please enter a message (at least 20 characters)');
-  }
-
-  // Only validate phone if it exists and is non-empty
-  if (data.phone !== undefined && data.phone !== null && data.phone !== '') {
-    if (!this.isValidPhone(data.phone)) {
-      errors.push('Please enter a valid phone number');
-    }
-  }
-
-  if (errors.length > 0) {
-    this.showError('Please correct the following errors:\n• ' + errors.join('\n• '));
-    return false;
-  }
-
-  return true;
-}
-
 
   isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -1210,137 +1155,153 @@ validateForm(data) {
   isValidPhone(phone) {
     return /^[\d\s\-\+\(\)]{10,20}$/.test(phone);
   }
-setLoading(isLoading) {
-  if (!this.submitButton) return;
 
-  this.submitButton.disabled = isLoading;
-  this.submitButton.innerHTML = isLoading 
-    ? '<i class="fa-solid fa-spinner fa-spin"></i> Sending...'
-    : 'Send Message <i class="fa-solid fa-paper-plane"></i>';
-}
+  async handleSubmit(event) {
+    event.preventDefault();
+    const formData = this.getFormData();
+
+    if (!this.validateForm(formData)) return;
+
+    this.setLoading(true);
+    this.showError(''); // Clear previous messages
+
+    try {
+      const response = await fetch(`${this.apiUrl}/submit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        this.showSuccess(result.message);
+        this.form.reset();
+      } else {
+        this.showError(result.message || 'Failed to submit. Please try again.');
+        this.displayValidationErrors(result.details);
+      }
+    } catch (error) {
+      this.showError('Network error. Please check your connection.');
+      console.error('Contact form submission error:', error);
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  setLoading(isLoading) {
+    if (!this.submitButton) return;
+    this.submitButton.disabled = isLoading;
+    this.submitButton.innerHTML = isLoading
+      ? '<i class="fa-solid fa-spinner fa-spin"></i> Sending...'
+      : 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+  }
 
   showSuccess(message) {
     this.messageDiv.className = 'contact-message success';
-    this.messageDiv.innerHTML = `
-      <i class="fa-solid fa-check-circle"></i>
-      <span>${message}</span>
-    `;
+    this.messageDiv.innerHTML = `<i class="fa-solid fa-check-circle"></i> ${message}`;
     this.messageDiv.style.display = 'block';
-    
-    setTimeout(() => {
-      this.messageDiv.style.display = 'none';
-    }, 10000);
+    setTimeout(() => (this.messageDiv.style.display = 'none'), 10000);
   }
 
   showError(message) {
+    if (!message) {
+      this.messageDiv.style.display = 'none';
+      return;
+    }
     this.messageDiv.className = 'contact-message error';
-    this.messageDiv.innerHTML = `
-      <i class="fa-solid fa-exclamation-triangle"></i>
-      <span>${message}</span>
-    `;
+    this.messageDiv.innerHTML = `<i class="fa-solid fa-exclamation-triangle"></i> ${message}`;
     this.messageDiv.style.display = 'block';
   }
 
   displayValidationErrors(errors) {
     if (!errors) return;
-
-    errors.forEach(error => {
-      const field = this.form.querySelector(`[name="${error.field}"]`);
-      if (field) {
-        field.style.borderColor = '#ff4757';
-        field.classList.add('error');
-        
-        // Remove error styling after user starts typing
-        field.addEventListener('input', () => {
-          field.style.borderColor = '';
-          field.classList.remove('error');
-        }, { once: true });
+    errors.forEach(({ field }) => {
+      const input = this.form.querySelector(`[name="${field}"]`);
+      if (input) {
+        input.style.borderColor = '#ff6b6b';
+        input.classList.add('error');
+        input.addEventListener(
+          'input',
+          () => {
+            input.style.borderColor = '';
+            input.classList.remove('error');
+          },
+          { once: true }
+        );
       }
     });
   }
 
   addRealTimeValidation() {
     const inputs = this.form.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
-      input.addEventListener('blur', () => this.validateField(input));
-    });
+    inputs.forEach((input) =>
+      input.addEventListener('blur', () => this.validateField(input))
+    );
   }
 
   validateField(field) {
     const value = field.value.trim();
-    let isValid = true;
+    let valid = true;
     let message = '';
 
     switch (field.name) {
       case 'name':
-        isValid = value.length >= 2;
-        message = 'Name must be at least 2 characters';
+        valid = value.length >= 2;
+        message = 'Name must be at least 2 characters.';
         break;
       case 'email':
-        isValid = this.isValidEmail(value);
-        message = 'Please enter a valid email address';
-        break;
-      case 'phone':
-        isValid = !value || this.isValidPhone(value);
-        message = 'Please enter a valid phone number';
+        valid = this.isValidEmail(value);
+        message = 'Enter a valid email.';
         break;
       case 'subject':
-        isValid = value.length >= 5;
-        message = 'Subject must be at least 5 characters';
+        valid = value.length >= 5;
+        message = 'Subject must be at least 5 characters.';
+        break;
+      case 'phone':
+        valid = value === '' || this.isValidPhone(value);
+        message = 'Enter a valid phone number.';
         break;
       case 'message':
-        isValid = value.length >= 20;
-        message = 'Message must be at least 20 characters';
+        valid = value.length >= 20;
+        message = 'Message must be at least 20 characters.';
         break;
     }
 
-    if (!isValid) {
-      this.showFieldError(field, message);
-    } else {
-      this.clearFieldError(field);
-    }
+    if (!valid) this.showFieldError(field, message);
+    else this.clearFieldError(field);
   }
 
   showFieldError(field, message) {
-    field.style.borderColor = '#ff4757';
     let errorDiv = field.parentNode.querySelector('.field-error');
-    
     if (!errorDiv) {
       errorDiv = document.createElement('div');
       errorDiv.className = 'field-error';
       field.parentNode.appendChild(errorDiv);
     }
-    
     errorDiv.textContent = message;
-    errorDiv.style.display = 'block';
+    errorDiv.style.color = '#ff6b6b';
+    errorDiv.style.marginTop = '4px';
+    errorDiv.style.fontSize = '0.85rem';
   }
 
   clearFieldError(field) {
-    field.style.borderColor = '';
     const errorDiv = field.parentNode.querySelector('.field-error');
-    if (errorDiv) {
-      errorDiv.style.display = 'none';
-    }
+    if (errorDiv) errorDiv.remove();
   }
 
   trackSuccess(formData) {
-    // Optional: Add analytics tracking
     if (typeof gtag !== 'undefined') {
       gtag('event', 'contact_form_submit', {
         event_category: 'Contact',
-        event_label: formData.subject
+        event_label: formData.subject || 'No subject',
       });
     }
   }
 }
 
-// Initialize contact form handler
-document.addEventListener('DOMContentLoaded', () => {
-  new ContactFormHandler();
-});
+document.addEventListener('DOMContentLoaded', () => new ContactFormHandler());
 
-
-// Ensure reveal elements are visible immediately to avoid blank sections
 document
   .querySelectorAll(".reveal")
   .forEach((el) => el.classList.add("in"));
