@@ -103,6 +103,15 @@ process.on('SIGINT', () => {
 
 
 
-module.exports = app;
+const router = require('express').Router();
+
+// Example Contact Form Submit API
+router.post('/submit', (req, res) => {
+  // You can add logic here (save to DB, send email, etc.)
+  res.json({ message: 'Form received successfully!' });
+});
+
+module.exports = router;
+
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
