@@ -1,4 +1,4 @@
-const emailService = require('../utils/EmailService');
+const emailService = require('../utils/emailService');
 
 const submitContactForm = async (req, res) => {
   try {
