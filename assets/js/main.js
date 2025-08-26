@@ -1099,7 +1099,7 @@ document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
 
 class ContactFormHandler {
   constructor() {
-    this.apiUrl = 'https://web-portal-fysyeqhgy-parshvs-projects-0955ed40.vercel.app/api/contact'; // Update this if needed
+    this.apiUrl = 'https://acses-backend.onrender.com/api/contact'; // Update this if needed
     this.form = document.getElementById('contact-form');
     this.submitButton = this.form ? this.form.querySelector('button[type="submit"]') : null;
     this.messageDiv = document.getElementById('contact-message');
