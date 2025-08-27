@@ -28,7 +28,7 @@ app.use(
 
 // CORS
 const corsOptions = {
-  origin:"https://acses-dkte.vercel.app/",
+  origin:"https://acses-dkte.vercel.app",
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
