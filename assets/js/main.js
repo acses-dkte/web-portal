@@ -1096,38 +1096,42 @@ document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
 
 
 // Enhanced Contact Form Handler - Add this to your existing website JS
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form");
+  const messageDiv = document.getElementById("contact-message");
 
-document.getElementById("contact-form").addEventListener("submit", async function(e) {
-  e.preventDefault();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const name = document.getElementById("contact-name").value.trim();
-  const email = document.getElementById("contact-email").value.trim();
-  const message = document.getElementById("message").value.trim();
-  const statusMessage = document.getElementById("contact-message");
+    const formData = {
+      name: form.querySelector('[name="name"]').value.trim(),
+      email: form.querySelector('[name="email"]').value.trim(),
+      message: form.querySelector('[name="message"]').value.trim(),
+    };
 
-  try {
-    const response = await fetch("https://your-backend-url.onrender.com/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, message })
-    });
+    try {
+      const res = await fetch("https://acses-backend.onrender.com/api/contact/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    if (response.ok) {
-      statusMessage.style.display = "block";
-      statusMessage.style.color = "lightgreen";
-      statusMessage.innerText = "✅ Message sent successfully!";
-      document.getElementById("contact-form").reset();
-    } else {
-      throw new Error("Failed to send message");
+      const data = await res.json();
+      console.log("Response:", data);
+
+      if (res.ok) {
+        messageDiv.textContent = "✅ Success: " + (data.message || "Message sent");
+        messageDiv.style.color = "limegreen";
+      } else {
+        messageDiv.textContent = "❌ Error: " + (data.message || "Something went wrong");
+        messageDiv.style.color = "red";
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
+      messageDiv.textContent = "❌ Network error: " + err.message;
+      messageDiv.style.color = "red";
     }
-  } catch (error) {
-    statusMessage.style.display = "block";
-    statusMessage.style.color = "red";
-    statusMessage.innerText = "❌ Error sending message. Please try again.";
-    console.error("Contact form submission error:", error);
-  }
+  });
 });
 
 document
