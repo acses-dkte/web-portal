@@ -28,9 +28,7 @@ app.use(
 
 // CORS
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN
-    ? process.env.CORS_ORIGIN.split(',')
-    : ['http://localhost:3000', 'https://acess-dkte.vercel.app','*'],
+  origin:"*",
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
