@@ -1119,20 +1119,40 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await res.json();
       console.log("Response:", data);
 
+      // ✅ Show proper messages
       if (res.ok) {
-        messageDiv.textContent = "✅ Success: " + (data.message || "Message sent");
-        messageDiv.style.color = "limegreen";
+        showSuccess(data.message || "Message sent successfully!");
+        form.reset();
       } else {
-        messageDiv.textContent = "❌ Error: " + (data.message || "Something went wrong");
-        messageDiv.style.color = "red";
+        if (data.details && data.details.length > 0) {
+          // Combine all backend validation messages
+          const errorText = data.details.map(e => `• ${e.message}`).join("<br>");
+          showError("Please fix the following errors:<br>" + errorText);
+        } else {
+          showError(data.message || "Failed to submit. Please try again.");
+        }
       }
     } catch (err) {
-      console.error("Fetch error:", err);
-      messageDiv.textContent = "❌ Network error: " + err.message;
-      messageDiv.style.color = "red";
+      console.error("Contact form submission error:", err);
+      showError("Network error. Please try again later.");
     }
   });
+
+  // Helpers to display messages
+  function showSuccess(message) {
+    messageDiv.className = "contact-message success";
+    messageDiv.innerHTML = `<i class="fa-solid fa-check-circle"></i> ${message}`;
+    messageDiv.style.display = "block";
+    setTimeout(() => (messageDiv.style.display = "none"), 8000);
+  }
+
+  function showError(message) {
+    messageDiv.className = "contact-message error";
+    messageDiv.innerHTML = `<i class="fa-solid fa-exclamation-triangle"></i> ${message}`;
+    messageDiv.style.display = "block";
+  }
 });
+
 
 document
   .querySelectorAll(".reveal")
