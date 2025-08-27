@@ -1,7 +1,5 @@
 const express = require('express');
-const { validateContactForm, securityValidation } = require('../middleware/validation');
-const { submitContactForm, testEmail } = require('../controllers/contactControllers');
-
+const { validateContactForm, securityValidation } = require('../utils/validation');
 const router = express.Router();
 
 const { handleContactForm } = require('../controllers/contactControllers');
@@ -9,8 +7,7 @@ const { handleContactForm } = require('../controllers/contactControllers');
 // POST /api/contact/submit
 router.post('/submit', handleContactForm);
 
-// Test endpoint (development only)
-router.post('/test', testEmail);
+
 
 // Get contact form info
 router.get('/info', (req, res) => {

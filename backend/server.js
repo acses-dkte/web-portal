@@ -12,26 +12,28 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Security Middleware
-app.use(helmet({
-  crossOriginEmbedderPolicy: false,
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'", "data:", "https:"],
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false,
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'", "data:", "https:"],
+      },
     },
-  },
-}));
+  })
+);
 
-// CORS Configuration
+// CORS
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ['http://localhost:3000','http://localhost:5000','https://acess-dkte.vercel.app'],
+  origin: process.env.CORS_ORIGIN
+    ? process.env.CORS_ORIGIN.split(',')
+    : ['http://localhost:3000', 'https://acess-dkte.vercel.app'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
 };
-
 app.use(cors(corsOptions));
 
 // General Middleware
@@ -42,68 +44,44 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Rate Limiting
 const limiter = rateLimit({
-  windowMs: (process.env.RATE_LIMIT_WINDOW || 15) * 60 * 1000, // 15 minutes
-  max: process.env.RATE_LIMIT_MAX || 5, // limit each IP to 5 requests per windowMs
-  message: {
-    error: 'Too many requests from this IP, please try again later.',
-    retryAfter: Math.ceil((process.env.RATE_LIMIT_WINDOW || 15) * 60)
-  },
-  standardHeaders: true,
-  legacyHeaders: false,
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 20,
+  message: { error: 'Too many requests, try again later.' },
 });
-
 app.use('/api/contact', limiter);
 
-// Health Check Endpoint
+// Health Check
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'OK',
-    message: 'ACSES API Server is running',
+    message: 'ACSES API is running',
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
   });
 });
 
-// API Routes
+// Routes
 app.use('/api/contact', contactRoutes);
 
-// 404 Handler
+// 404
 app.use('*', (req, res) => {
   res.status(404).json({
     error: 'Endpoint not found',
-    message: 'The requested resource does not exist',
-    availableEndpoints: [
-      'GET /api/health',
-      'POST /api/contact/submit'
-    ]
+    availableEndpoints: ['GET /api/health', 'POST /api/contact/submit'],
   });
 });
 
 // Global Error Handler
-app.use((error, req, res, next) => {
-  console.error('Global Error:', error);
-  
-  res.status(error.status || 500).json({
+app.use((err, req, res, next) => {
+  console.error('Global Error:', err);
+  res.status(err.status || 500).json({
     error: 'Internal Server Error',
-    message: process.env.NODE_ENV === 'development' ? error.message : 'Something went wrong',
-    ...(process.env.NODE_ENV === 'development' && { stack: error.stack })
+    message:
+      process.env.NODE_ENV === 'development'
+        ? err.message
+        : 'Something went wrong',
+    ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
   });
 });
 
-// Graceful Shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received, shutting down gracefully');
-  process.exit(0);
-});
-
-process.on('SIGINT', () => {
-  console.log('SIGINT received, shutting down gracefully');
-  process.exit(0);
-});
-
-
-
-
-
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
