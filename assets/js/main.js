@@ -1099,60 +1099,117 @@ document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
   const messageDiv = document.getElementById("contact-message");
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  // For each field
+  const fields = {
+    name: form.querySelector('[name="name"]'),
+    email: form.querySelector('[name="email"]'),
+    message: form.querySelector('[name="message"]')
+  };
+  const errorEls = {
+    name: document.getElementById("contact-name-error"),
+    email: document.getElementById("contact-email-error"),
+    message: document.getElementById("contact-message-error"),
+  };
+
+  function clearAllErrors() {
+    Object.values(errorEls).forEach(err => {
+      err.textContent = "";
+      err.style.display = "none";
+    });
+    Object.values(fields).forEach(input => input.classList.remove("border-red-400"));
+  }
+
+  function setFieldError(field, msg) {
+    fields[field].classList.add("border-red-400");
+    errorEls[field].textContent = msg;
+    errorEls[field].style.display = "block";
+  }
+
+  function validateFields() {
+    let valid = true;
+    clearAllErrors();
+    if (!fields.name.value.trim()) {
+      setFieldError("name", "Name is required.");
+      valid = false;
+    }
+    // email
+    const emailVal = fields.email.value.trim();
+    const emailRegex = /\S+@\S+\.\S+/;
+    if (!emailVal) {
+      setFieldError("email", "Email is required.");
+      valid = false;
+    } else if (!emailRegex.test(emailVal)) {
+      setFieldError("email", "Enter a valid email.");
+      valid = false;
+    }
+    if (!fields.message.value.trim()) {
+      setFieldError("message", "Message is required.");
+      valid = false;
+    }
+    return valid;
+  }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    clearAllErrors();
+    messageDiv.style.display = "none";
 
+    // Frontend validation
+    if (!validateFields()) return;
+
+    // Loading btn...
+    const originalBtn = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<span class="spinner-border" style="margin-right:8px"></span>Sending...`;
+
+    // Prepare data
     const formData = {
-      name: form.querySelector('[name="name"]').value.trim(),
-      email: form.querySelector('[name="email"]').value.trim(),
-      message: form.querySelector('[name="message"]').value.trim(),
+      name: fields.name.value.trim(),
+      email: fields.email.value.trim(),
+      message: fields.message.value.trim()
     };
 
     try {
       const res = await fetch("https://acses-backend.onrender.com/api/contact/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
-
       const data = await res.json();
-      console.log("Response:", data);
 
-      // ✅ Show proper messages
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtn;
+
       if (res.ok) {
-        showSuccess(data.message || "Message sent successfully!");
+        messageDiv.className = "contact-message success";
+        messageDiv.innerHTML = `<i class="fa-solid fa-check-circle"></i> ${data.message || "Message sent successfully!"}`;
+        messageDiv.style.display = "block";
         form.reset();
       } else {
-        if (data.details && data.details.length > 0) {
-          // Combine all backend validation messages
-          const errorText = data.details.map(e => `• ${e.message}`).join("<br>");
-          showError("Please fix the following errors:<br>" + errorText);
-        } else {
-          showError(data.message || "Failed to submit. Please try again.");
+        // Backend validation error handling (Joi-style: details: [{ path: ['field'], message: "Error" }])
+        if (data.details && Array.isArray(data.details)) {
+          data.details.forEach(e => {
+            if (e.path && errorEls[e.path[0]]) {
+              setFieldError(e.path[0], e.message);
+            }
+          });
+        } else if (data.message) {
+          messageDiv.className = "contact-message error";
+          messageDiv.innerHTML = `<i class="fa-solid fa-exclamation-triangle"></i> ${data.message}`;
+          messageDiv.style.display = "block";
         }
       }
     } catch (err) {
-      console.error("Contact form submission error:", err);
-      showError("Network error. Please try again later.");
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtn;
+      messageDiv.className = "contact-message error";
+      messageDiv.innerHTML = `<i class="fa-solid fa-exclamation-triangle"></i> Network error. Please try again.`;
+      messageDiv.style.display = "block";
     }
   });
-
-  // Helpers to display messages
-  function showSuccess(message) {
-    messageDiv.className = "contact-message success";
-    messageDiv.innerHTML = `<i class="fa-solid fa-check-circle"></i> ${message}`;
-    messageDiv.style.display = "block";
-    setTimeout(() => (messageDiv.style.display = "none"), 8000);
-  }
-
-  function showError(message) {
-    messageDiv.className = "contact-message error";
-    messageDiv.innerHTML = `<i class="fa-solid fa-exclamation-triangle"></i> ${message}`;
-    messageDiv.style.display = "block";
-  }
 });
-
 
 document
   .querySelectorAll(".reveal")

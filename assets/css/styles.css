@@ -2562,3 +2562,23 @@ textarea.error {
     font-size: 0.9rem;
   }
 }
+input.border-red-400, textarea.border-red-400 {
+  border-color: #f87171 !important;
+  background: #2f1112;
+}
+.contact-error-msg {
+  color: #f87171;
+  font-size: 0.95em;
+  display: none;
+  margin-top: 0.2em;
+}
+.spinner-border {
+  border: 2px solid #fff;
+  border-right-color: transparent;
+  width: 1em; height: 1em;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin .7s linear infinite;
+  vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }

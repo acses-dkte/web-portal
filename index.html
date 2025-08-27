@@ -778,19 +778,21 @@
       <label for="contact-name" class="text-white/70 text-sm">Your Name</label>
       <input id="contact-name" name="name" type="text" required
         class="mt-2 w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2" />
+        <p class="contact-error-msg" id="contact-name-error"></p>
     </div>
 
     <div>
       <label for="contact-email" class="text-white/70 text-sm">Your Email</label>
       <input id="contact-email" name="email" type="email" required
         class="mt-2 w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2" />
-      <p id="contact-email-error" class="hidden text-red-400 text-sm">Enter a valid email</p>
+      <p class="contact-error-msg" id="contact-email-error"></p>
     </div>
 
     <div>
       <label for="message" class="text-white/70 text-sm">Message</label>
       <textarea id="message" name="message" rows="4" required
         class="mt-2 w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2"></textarea>
+        <p class="contact-error-msg" id="contact-message-error"></p>
     </div>
 
     <button type="submit"
