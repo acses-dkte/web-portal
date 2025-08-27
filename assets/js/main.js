@@ -1144,10 +1144,14 @@ document.addEventListener("DOMContentLoaded", () => {
       setFieldError("email", "Enter a valid email.");
       valid = false;
     }
-    if (!fields.message.value.trim()) {
-      setFieldError("message", "Message is required.");
-      valid = false;
-    }
+    const msgVal = fields.message.value.trim();
+  if (!msgVal) {
+    setFieldError("message", "Message is required.");
+    valid = false;
+  } else if (msgVal.length < 10) {
+    setFieldError("message", "Message must be at least 10 characters.");
+    valid = false;
+  }
     return valid;
   }
 
