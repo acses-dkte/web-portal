@@ -50,5 +50,3 @@ MIT © ACSES & Contributors
 
 > For questions and contributions, please open an issue or submit a pull request.
 
-## 📁 Project Structure
-
