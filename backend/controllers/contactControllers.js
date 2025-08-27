@@ -1,51 +1,26 @@
 const emailService = require('../utils/emailService');
 
-const submitContactForm = async (req, res) => {
+async function handleContactForm(req, res) {
   try {
-    const contactData = {
-      ...req.body,
-      timestamp: new Date().toISOString(),
-      ip: req.ip || req.connection.remoteAddress,
-      userAgent: req.headers['user-agent']
-    };
+    const { name, email, message } = req.body;
 
-    console.log('📧 Processing contact form submission from:', contactData.email);
+    // Validate
+    const { isValid, errors } = validateContactForm({ name, email, message });
+    if (!isValid) {
+      return res.status(400).json({ error: 'Validation failed', details: errors });
+    }
 
-    // Send notification email to admin
-    const emailResult = await emailService.sendContactFormEmail(contactData);
+    // Send email (optional)
+    await sendContactEmail({ name, email, message });
 
-    // Send auto-reply to user (non-blocking)
-    emailService.sendAutoReply(contactData).catch(error => {
-      console.warn('⚠️ Auto-reply failed (non-critical):', error.message);
-    });
-
-    // Log successful submission
-    console.log('✅ Contact form processed successfully:', {
-      name: contactData.name,
-      email: contactData.email,
-      subject: "",
-      messageId: emailResult.messageId
-    });
-
-    res.status(200).json({
-      success: true,
-      message: 'Thank you for your message! We\'ll get back to you within 24-48 hours.',
-      data: {
-        submittedAt: contactData.timestamp,
-        messageId: emailResult.messageId
-      }
-    });
-
+    res.status(200).json({ message: 'Message sent successfully!' });
   } catch (error) {
-    console.error('❌ Contact form submission failed:', error);
-
-    res.status(500).json({
-      error: 'Submission Failed',
-      message: 'We encountered an issue processing your message. Please try again later or contact us directly.',
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
-    });
+    console.error('❌ Contact form error:', error);
+    res.status(500).json({ error: 'Something went wrong. Please try again later.' });
   }
-};
+}
+
+module.exports = { handleContactForm };
 
 // Test endpoint for checking email service
 const testEmail = async (req, res) => {
