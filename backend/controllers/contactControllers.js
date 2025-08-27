@@ -23,7 +23,7 @@ const submitContactForm = async (req, res) => {
     console.log('✅ Contact form processed successfully:', {
       name: contactData.name,
       email: contactData.email,
-      subject: contactData.subject,
+      subject: "",
       messageId: emailResult.messageId
     });
 
@@ -57,8 +57,6 @@ const testEmail = async (req, res) => {
     const testData = {
       name: 'Test User',
       email: 'test@example.com',
-      phone: '+1234567890',
-      subject: 'API Test Email',
       message: 'This is a test message from the ACSES contact form API.',
       timestamp: new Date().toISOString()
     };

@@ -39,7 +39,7 @@ class EmailService {
   }
 
   async sendContactFormEmail(contactData) {
-    const { name, email, phone, subject, message, timestamp } = contactData;
+    const { name, email, message, timestamp } = contactData;
 
     const htmlTemplate = `
     <!DOCTYPE html>
@@ -84,16 +84,7 @@ class EmailService {
               <span class="info-label">Email:</span>
               <span class="info-value"><a href="mailto:${email}" style="color: #007bff; text-decoration: none;">${email}</a></span>
             </div>
-            ${phone ? `
-            <div class="info-row">
-              <span class="info-label">Phone:</span>
-              <span class="info-value"><a href="tel:${phone}" style="color: #007bff; text-decoration: none;">${phone}</a></span>
-            </div>
-            ` : ''}
-            <div class="info-row">
-              <span class="info-label">Subject:</span>
-              <span class="info-value"><strong>${subject}</strong></span>
-            </div>
+           
             <div class="info-row">
               <span class="info-label">Submitted:</span>
               <span class="info-value timestamp">${new Date(timestamp).toLocaleString()}</span>
@@ -127,8 +118,6 @@ New Contact Form Submission - ACSES
 Contact Details:
 Name: ${name}
 Email: ${email}
-${phone ? `Phone: ${phone}` : ''}
-Subject: ${subject}
 Submitted: ${new Date(timestamp).toLocaleString()}
 
 Message:
@@ -192,7 +181,7 @@ ACSES - Association of Computer Science & Engineering Students
         <div class="content">
           <p>Dear <strong>${name}</strong>,</p>
           <p>Thank you for reaching out to the <strong>Association of Computer Science & Engineering Students</strong>!</p>
-          <p>We have received your message regarding "<strong>${subject}</strong>" and will get back to you within 24-48 hours.</p>
+          <p>We have received your message "<strong></strong>" and will get back to you within 24-48 hours.</p>
           <p>In the meantime, feel free to:</p>
           <ul>
             <li>🌐 Explore our website for upcoming events</li>

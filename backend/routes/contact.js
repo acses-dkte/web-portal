@@ -4,12 +4,37 @@ const { submitContactForm, testEmail } = require('../controllers/contactControll
 
 const router = express.Router();
 
-// Submit contact form
-router.post('/submit', 
-  validateContactForm, 
-  securityValidation, 
-  submitContactForm
-);
+
+// POST /api/contact/submit
+router.post('/submit', async (req, res) => {
+  try {
+    // validate only name, email, message
+    const { error, value } = validateContactForm(req.body);
+
+    if (error) {
+      return res.status(400).json({
+        message: 'Validation failed',
+        details: error.details.map(err => ({
+          field: err.context.key,
+          message: err.message
+        }))
+      });
+    }
+
+    // Pass the valid data to controller
+    const result = await handleContactForm(value);
+
+    res.status(200).json({
+      message: 'Form submitted successfully!',
+      data: result
+    });
+  } catch (err) {
+    console.error('❌ Contact route error:', err);
+    res.status(500).json({ message: 'Something went wrong. Please try again later.' });
+  }
+});
+
+module.exports = router;
 
 // Test endpoint (development only)
 router.post('/test', testEmail);
@@ -23,13 +48,10 @@ router.get('/info', (req, res) => {
       submit: 'POST /api/contact/submit',
       test: 'POST /api/contact/test (development only)'
     },
-    requiredFields: ['name', 'email', 'subject', 'message'],
-    optionalFields: ['phone'],
+    requiredFields: ['name', 'email', 'message'],
     limits: {
       name: '2-100 characters',
       email: '255 characters max',
-      phone: '10-20 digits',
-      subject: '5-200 characters',
       message: '20-2000 characters'
     }
   });

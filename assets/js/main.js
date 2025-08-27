@@ -1097,210 +1097,38 @@ document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
 
 // Enhanced Contact Form Handler - Add this to your existing website JS
 
-class ContactFormHandler {
-  constructor() {
-    this.apiUrl = 'https://acses-backend.onrender.com/api/contact'; // Update this if needed
-    this.form = document.getElementById('contact-form');
-    this.submitButton = this.form ? this.form.querySelector('button[type="submit"]') : null;
-    this.messageDiv = document.getElementById('contact-message');
-    this.init();
-  }
+document.getElementById("contact-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
 
-  init() {
-    if (!this.form) return;
-    this.form.addEventListener('submit', e => this.handleSubmit(e));
-    this.addRealTimeValidation();
-  }
+  const name = document.getElementById("contact-name").value.trim();
+  const email = document.getElementById("contact-email").value.trim();
+  const message = document.getElementById("message").value.trim();
+  const statusMessage = document.getElementById("contact-message");
 
-  getFormData() {
-    return {
-      name: this.form.querySelector('[name="name"]').value.trim(),
-      email: this.form.querySelector('[name="email"]').value.trim(),
-      subject: this.form.querySelector('[name="subject"]').value.trim(),
-      phone: this.form.querySelector('[name="phone"]').value.trim(),
-      message: this.form.querySelector('[name="message"]').value.trim(),
-    };
-  }
-
-  validateForm(data) {
-    const errors = [];
-
-    if (!data.name || data.name.length < 2)
-      errors.push('Please enter a valid name (at least 2 characters).');
-
-    if (!data.email || !this.isValidEmail(data.email))
-      errors.push('Please enter a valid email address.');
-
-    if (!data.subject || data.subject.length < 5)
-      errors.push('Please enter a subject (at least 5 characters).');
-
-    if (!data.message || data.message.length < 20)
-      errors.push('Please enter a message (at least 20 characters).');
-
-    if (data.phone && !this.isValidPhone(data.phone))
-      errors.push('Please enter a valid phone number.');
-
-    if (errors.length) {
-      this.showError('Please fix the following errors:\n• ' + errors.join('\n• '));
-      return false;
-    }
-
-    return true;
-  }
-
-  isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
-
-  isValidPhone(phone) {
-    return /^[\d\s\-\+\(\)]{10,20}$/.test(phone);
-  }
-
-  async handleSubmit(event) {
-    event.preventDefault();
-    const formData = this.getFormData();
-
-    if (!this.validateForm(formData)) return;
-
-    this.setLoading(true);
-    this.showError(''); // Clear previous messages
-
-    try {
-      const response = await fetch(`${this.apiUrl}/submit`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        this.showSuccess(result.message);
-        this.form.reset();
-      } else {
-        this.showError(result.message || 'Failed to submit. Please try again.');
-        this.displayValidationErrors(result.details);
-      }
-    } catch (error) {
-      this.showError('Network error. Please check your connection.');
-      console.error('Contact form submission error:', error);
-    } finally {
-      this.setLoading(false);
-    }
-  }
-
-  setLoading(isLoading) {
-    if (!this.submitButton) return;
-    this.submitButton.disabled = isLoading;
-    this.submitButton.innerHTML = isLoading
-      ? '<i class="fa-solid fa-spinner fa-spin"></i> Sending...'
-      : 'Send Message <i class="fa-solid fa-paper-plane"></i>';
-  }
-
-  showSuccess(message) {
-    this.messageDiv.className = 'contact-message success';
-    this.messageDiv.innerHTML = `<i class="fa-solid fa-check-circle"></i> ${message}`;
-    this.messageDiv.style.display = 'block';
-    setTimeout(() => (this.messageDiv.style.display = 'none'), 10000);
-  }
-
-  showError(message) {
-    if (!message) {
-      this.messageDiv.style.display = 'none';
-      return;
-    }
-    this.messageDiv.className = 'contact-message error';
-    this.messageDiv.innerHTML = `<i class="fa-solid fa-exclamation-triangle"></i> ${message}`;
-    this.messageDiv.style.display = 'block';
-  }
-
-  displayValidationErrors(errors) {
-    if (!errors) return;
-    errors.forEach(({ field }) => {
-      const input = this.form.querySelector(`[name="${field}"]`);
-      if (input) {
-        input.style.borderColor = '#ff6b6b';
-        input.classList.add('error');
-        input.addEventListener(
-          'input',
-          () => {
-            input.style.borderColor = '';
-            input.classList.remove('error');
-          },
-          { once: true }
-        );
-      }
+  try {
+    const response = await fetch("https://your-backend-url.onrender.com/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, email, message })
     });
-  }
 
-  addRealTimeValidation() {
-    const inputs = this.form.querySelectorAll('input, textarea');
-    inputs.forEach((input) =>
-      input.addEventListener('blur', () => this.validateField(input))
-    );
-  }
-
-  validateField(field) {
-    const value = field.value.trim();
-    let valid = true;
-    let message = '';
-
-    switch (field.name) {
-      case 'name':
-        valid = value.length >= 2;
-        message = 'Name must be at least 2 characters.';
-        break;
-      case 'email':
-        valid = this.isValidEmail(value);
-        message = 'Enter a valid email.';
-        break;
-      case 'subject':
-        valid = value.length >= 5;
-        message = 'Subject must be at least 5 characters.';
-        break;
-      case 'phone':
-        valid = value === '' || this.isValidPhone(value);
-        message = 'Enter a valid phone number.';
-        break;
-      case 'message':
-        valid = value.length >= 20;
-        message = 'Message must be at least 20 characters.';
-        break;
+    if (response.ok) {
+      statusMessage.style.display = "block";
+      statusMessage.style.color = "lightgreen";
+      statusMessage.innerText = "✅ Message sent successfully!";
+      document.getElementById("contact-form").reset();
+    } else {
+      throw new Error("Failed to send message");
     }
-
-    if (!valid) this.showFieldError(field, message);
-    else this.clearFieldError(field);
+  } catch (error) {
+    statusMessage.style.display = "block";
+    statusMessage.style.color = "red";
+    statusMessage.innerText = "❌ Error sending message. Please try again.";
+    console.error("Contact form submission error:", error);
   }
-
-  showFieldError(field, message) {
-    let errorDiv = field.parentNode.querySelector('.field-error');
-    if (!errorDiv) {
-      errorDiv = document.createElement('div');
-      errorDiv.className = 'field-error';
-      field.parentNode.appendChild(errorDiv);
-    }
-    errorDiv.textContent = message;
-    errorDiv.style.color = '#ff6b6b';
-    errorDiv.style.marginTop = '4px';
-    errorDiv.style.fontSize = '0.85rem';
-  }
-
-  clearFieldError(field) {
-    const errorDiv = field.parentNode.querySelector('.field-error');
-    if (errorDiv) errorDiv.remove();
-  }
-
-  trackSuccess(formData) {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'contact_form_submit', {
-        event_category: 'Contact',
-        event_label: formData.subject || 'No subject',
-      });
-    }
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => new ContactFormHandler());
+});
 
 document
   .querySelectorAll(".reveal")
