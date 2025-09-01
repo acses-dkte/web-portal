@@ -570,18 +570,7 @@ class IndividualTeamCards {
         department: "Executive",
         icon: "fa-solid fa-user-tie"
       },
-      {
-        name: "Ms. Devyani Patil",
-        role: "Treasurer",
-        department: "Finance",
-        icon: "fa-solid fa-coins"
-      },
-      {
-        name: "Mr. Mehbub Mulla",
-        role: "Treasurer",
-        department: "Finance",
-        icon: "fa-solid fa-coins"
-      },
+     
       {
         name: "Ms. Archita Jalan",
         role: "Secretary",
@@ -599,6 +588,18 @@ class IndividualTeamCards {
         role: "Secretary",
         department: "Administration",
         icon: "fa-solid fa-file-pen"
+      },
+       {
+        name: "Ms. Devyani Patil",
+        role: "Treasurer",
+        department: "Finance",
+        icon: "fa-solid fa-coins"
+      },
+      {
+        name: "Mr. Mehbub Mulla",
+        role: "Treasurer",
+        department: "Finance",
+        icon: "fa-solid fa-coins"
       },
       {
         name: "Mr. Parshv Athane",
