@@ -214,9 +214,111 @@
         text-align: center;
         position: relative;
         overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+         transition: 
+            transform 0.4s cubic-bezier(0.25,0.75,0.45,1.1),
+            box-shadow 0.4s,
+            background 0.4s,
+            border-color 0.4s,
+            left 0.4s, top 0.4s, width 0.4s, height 0.4s;
         cursor: pointer;
+        
       }
+.individual-card--centered {
+  position: fixed !important;
+  top: 50vh !important;
+  left: 50vw !important;
+  transform: translate(-50%, -50%) scale(1.2) !important;
+  z-index: 9999 !important;
+  width: 40vw !important;    /* Optional: Set width and height for appearance */
+  max-width: 90vw !important;
+  height: auto !important;
+  box-shadow:
+    0 30px 70px 8px rgba(0,0,0,0.5),
+    0 0 50px 10px rgba(255,211,78,0.25);
+}
+
+/* Optional: Remove pointer events on others while focused */
+.individual-card--overlay-blocker {
+  pointer-events: none;
+  opacity: 0.2;
+  filter: blur(2px);
+  transition: opacity 0.4s, filter 0.4s;
+}
+/* Core cloned card styles */
+.individual-card--clone {
+  cursor: default;
+  user-select: none;
+  background: rgba(15, 15, 20, 0.95);
+  border-radius: 1rem;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.6), 0 0 50px rgba(255,211,78,0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  filter: none !important;
+  pointer-events: auto !important;
+}
+
+/* Hovered glow effect for cloned card and original cards */
+.individual-card.hovered,
+.individual-card--clone.hovered {
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 25px rgba(255, 211, 78, 0.15);
+  border-color: rgba(255, 211, 78, 0.3);
+  background: rgba(15, 15, 20, 0.95);
+  transition: box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+/* Role icon overlay glow on hover */
+.role-icon-overlay.hovered {
+  box-shadow: 0 0 20px 6px rgba(255, 211, 78, 0.33);
+  border-radius: 50%;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Profile image in cloned card */
+.individual-card--clone .profile-photo {
+  width: 349px !important;
+  height: 352px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  margin: 0 auto 20px !important;
+  display: block !important;
+}
+
+/* Initials fallback photo in cloned card */
+.individual-card--clone .profile-initials {
+  width: 180px !important;
+  height: 180px !important;
+  border-radius: 50% !important;
+  font-size: 5rem !important;
+  margin: 0 auto 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Member name text in cloned card */
+.individual-card--clone .member-name {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 0 !important;
+  color: #ffcf3c;
+  text-shadow: 0 0 8px rgba(255, 211, 60, 0.9);
+}
+
+/* Member role text in cloned card */
+.individual-card--clone .member-role {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 0.3rem !important;
+  color: #ddd;
+}
+
+/* Optional: Smooth transition for visibility and scaling */
+.individual-card--clone,
+.individual-card {
+  transition: all 0.3s ease;
+}
 
       /* Subtle Border Animation */
       .individual-card::before {
@@ -237,15 +339,15 @@
       }
 
       /* Hover Effects */
-      .individual-card:hover {
-        transform: translateY(-10px) scale(1.02);
+     .individual-card:hover {
+        transform: translateY(-10px) scale(1.2);
         border-color: rgba(255, 211, 78, 0.3);
         box-shadow:
           0 20px 40px rgba(0, 0, 0, 0.3),
           0 0 25px rgba(255, 211, 78, 0.15);
         background: rgba(15, 15, 20, 0.95);
+        z-index: 2;
       }
-
       /* Profile Photo */
       .profile-photo {
         width: 120px;

@@ -63,23 +63,23 @@ class NextLevelLoader {
   }
 
   updateProgress(progress) {
-    this.currentProgress = progress;
+    // this.currentProgress = progress;
 
-    // Update progress bar
-    this.progressFill.style.width = `${progress}%`;
-    this.progressGlow.style.width = `${progress}%`;
+    // // Update progress bar
+    // this.progressFill.style.width = `${progress}%`;
+    // this.progressGlow.style.width = `${progress}%`;
 
     // Update percentage with easing
-    const displayProgress = Math.floor(progress);
-    this.progressPercentage.textContent = `${displayProgress}%`;
+    // const displayProgress = Math.floor(progress);
+    // this.progressPercentage.textContent = `${displayProgress}%`;
 
-    // Add some randomness for realism
-    if (progress < 95) {
-      const randomDelay = Math.random() * 100;
-      setTimeout(() => {
-        // Small pause for realism
-      }, randomDelay);
-    }
+    // // Add some randomness for realism
+    // if (progress < 95) {
+    //   const randomDelay = Math.random() * 100;
+    //   setTimeout(() => {
+    //     // Small pause for realism
+    //   }, randomDelay);
+    // }
   }
 
   cycleMessages() {
@@ -174,8 +174,8 @@ class NextLevelLoader {
     logoIcon.style.transform = 'scale(1.1)';
 
     // Flash progress bar green
-    this.progressFill.style.background = 'linear-gradient(90deg, #00ff00, #00ff88)';
-    this.progressGlow.style.background = 'rgba(0, 255, 0, 0.8)';
+    // this.progressFill.style.background = 'linear-gradient(90deg, #00ff00, #00ff88)';
+    // this.progressGlow.style.background = 'rgba(0, 255, 0, 0.8)';
 
     // Show completion message
     const lastMessage = this.messages[this.messages.length - 1];
@@ -544,19 +544,19 @@ class IndividualTeamCards {
   constructor() {
     // Flatten all team members into individual entries
     this.allMembers = [
-      {
-        name: "Prof. S.R. Sagare",
-        role: "Mentor",
-        department: "Faculty",
-        icon: "fa-solid fa-graduation-cap",
-        photo: "path/to/photo.jpg"
-      },
+      // {
+      //   name: "Prof. S. C. Sagare",
+      //   role: "Mentor",
+      //   department: "Faculty",
+      //   icon: "fa-solid fa-graduation-cap",
+      //   photo: "path/to/photo.jpg"
+      // },
       {
         name: "Mr. Mahaveer Daga",
         role: "President",
         department: "Executive",
         icon: "fa-solid fa-crown",
-        photo: "path/to/photo.jpg"
+        photo: ""
       },
       {
         name: "Ms. Pramila Patil",
@@ -605,7 +605,7 @@ class IndividualTeamCards {
         role: "Technical Head",
         department: "Technical",
         icon: "fa-solid fa-code",
-        photo: "https://media.licdn.com/dms/image/v2/D4D03AQFgWj2klKbAhQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729779732871?e=1755734400&v=beta&t=h7trhQ0-zgZaIJMp6MIqeaLSnqfiGaTtoEhnbgMDsos"
+        photo: "https://media.licdn.com/dms/image/v2/D4D03AQFgWj2klKbAhQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1729779732840?e=1759363200&v=beta&t=_cjiMc9hFX9lRuVm-rWsRKAEh9gj2__6PaViQUNAaqc"
       },
       {
         name: "Ms. Payal Shahapure",
@@ -731,33 +731,141 @@ class IndividualTeamCards {
     });
   }
 
-  createIndividualCard(member, index) {
-    const card = document.createElement('div');
-    card.className = `individual-card ${this.getCardStyle(index)} reveal`;
-    card.style.transitionDelay = `${index * 0.05}s`;
+createIndividualCard(member, index) {
+  const card = document.createElement('div');
+  card.className = `individual-card ${this.getCardStyle(index)} reveal`;
+  card.style.transitionDelay = `${index * 0.05}s`;
 
-    const photoElement = member.photo
-      ? `<img src="${member.photo}" alt="${member.name}" class="profile-photo" />`
-      : `<div class="profile-initials">${this.getInitials(member.name)}</div>`;
+  const photoElement = member.photo
+    ? `<img src="${member.photo}" alt="${member.name}" class="profile-photo" />`
+    : `<div class="profile-initials">${this.getInitials(member.name)}</div>`;
 
-    card.innerHTML = `
-      <div class="floating-element floating-element-1"></div>
-      <div class="floating-element floating-element-2"></div>
-      
-      <div class="profile-section">
-        ${photoElement}
-        <div class="role-icon-overlay">
-          <i class="${member.icon}"></i>
-        </div>
+  card.innerHTML = `
+    <div class="floating-element floating-element-1"></div>
+    <div class="floating-element floating-element-2"></div>
+    <div class="profile-section">
+      ${photoElement}
+      <div class="role-icon-overlay">
+        <i class="${member.icon}"></i>
       </div>
-      
-      <h3 class="member-name">${member.name}</h3>
-      <p class="member-role">${member.role}</p>
-      <div class="department-badge">${member.department}</div>
-    `;
+    </div>
+    <h3 class="member-name">${member.name}</h3>
+    <p class="member-role">${member.role}</p>
+    <div class="department-badge">${member.department}</div>
+  `;
 
-    return card;
-  }
+  let clone;
+
+  card.addEventListener('mouseenter', () => {
+    // Skip cloning effect on small screens (mobile)
+    if (window.innerWidth <= 768) return;
+
+    clone = card.cloneNode(true);
+
+    // Position and style the clone as a centered overlay
+    clone.style.position = 'fixed';
+    clone.style.top = '50%';
+    clone.style.left = '50%';
+    clone.style.transform = 'translate(-50%, -50%) scale(1)';
+    clone.style.zIndex = '9999';
+    clone.style.width = 'auto';
+    clone.style.maxWidth = '90vw';
+    clone.style.height = 'auto';
+    clone.style.padding = '2rem';
+    clone.style.background = 'rgba(15,15,20,0.95)';
+    clone.style.borderRadius = '1rem';
+    clone.style.boxShadow = '0 30px 70px rgba(0,0,0,0.6), 0 0 50px rgba(255,211,78,0.25)';
+    clone.style.transition = 'transform 0.4s ease';
+    clone.classList.add('individual-card--clone', 'hovered');
+
+    // Show only profile photo, member name, and member role; hide others
+    Array.from(clone.children).forEach(child => {
+      if (
+        !child.classList.contains('profile-section') &&
+        !child.classList.contains('member-name') &&
+        !child.classList.contains('member-role')
+      ) {
+        child.style.display = 'none';
+      }
+    });
+
+    // Enlarge profile photo or initials
+    const profileSection = clone.querySelector('.profile-section');
+    if (profileSection) {
+      const img = profileSection.querySelector('img.profile-photo');
+      if (img) {
+        img.style.width = '180px';
+        img.style.height = '180px';
+        img.style.borderRadius = '50%';
+        img.style.objectFit = 'cover';
+        img.style.margin = '0 auto 20px';
+        img.style.display = 'block';
+      } else {
+        const initials = profileSection.querySelector('.profile-initials');
+        if (initials) {
+          initials.style.width = '180px';
+          initials.style.height = '180px';
+          initials.style.borderRadius = '50%';
+          initials.style.fontSize = '5rem';
+          initials.style.margin = '0 auto 20px';
+          initials.style.display = 'flex';
+          initials.style.alignItems = 'center';
+          initials.style.justifyContent = 'center';
+        }
+      }
+    }
+
+    // Style member name and role text
+    const nameEl = clone.querySelector('.member-name');
+    if (nameEl) {
+      nameEl.style.textAlign = 'center';
+      nameEl.style.fontSize = '2.5rem';
+      nameEl.style.fontWeight = '700';
+      nameEl.style.marginTop = '0';
+    }
+    const roleEl = clone.querySelector('.member-role');
+    if (roleEl) {
+      roleEl.style.textAlign = 'center';
+      roleEl.style.fontSize = '1.5rem';
+      roleEl.style.marginTop = '0.3rem';
+      roleEl.style.color = '#ddd';
+    }
+
+    // Add hover glow to cloned card and role icon overlay
+    const iconOverlay = clone.querySelector('.role-icon-overlay');
+    if (iconOverlay) iconOverlay.classList.add('hovered');
+
+    document.body.appendChild(clone);
+
+    // Dim other cards except the original hovered one
+    document.querySelectorAll('.individual-card').forEach(c => {
+      if (c !== card) {
+        c.style.filter = 'blur(2px) brightness(0.6)';
+        c.style.pointerEvents = 'none';
+      } else {
+        c.style.filter = 'none';
+        c.style.pointerEvents = 'auto';
+      }
+    });
+  });
+
+  card.addEventListener('mouseleave', () => {
+    if (clone && clone.parentNode) {
+      clone.parentNode.removeChild(clone);
+      clone = null;
+    }
+    // Restore original cards
+    document.querySelectorAll('.individual-card').forEach(c => {
+      c.style.filter = '';
+      c.style.pointerEvents = '';
+    });
+  });
+
+  return card;
+}
+
+
+
 
   initIntersectionObserver() {
     const observer = new IntersectionObserver((entries) => {
