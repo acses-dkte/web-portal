@@ -556,13 +556,14 @@ class IndividualTeamCards {
         role: "President",
         department: "Executive",
         icon: "fa-solid fa-crown",
-        photo: ""
+        photo: "https://i.postimg.cc/vZWhDXBT/20250903-105608.jpg"
       },
       {
         name: "Ms. Pramila Patil",
         role: "Vice President",
         department: "Executive",
-        icon: "fa-solid fa-user-tie"
+        icon: "fa-solid fa-user-tie",
+        photo:"https://i.postimg.cc/d0VCv9Zz/20250903-105829.jpg "
       },
       {
         name: "Mr. Ashish Andhale",
@@ -575,19 +576,22 @@ class IndividualTeamCards {
         name: "Ms. Archita Jalan",
         role: "Secretary",
         department: "Administration",
-        icon: "fa-solid fa-file-pen"
+        icon: "fa-solid fa-file-pen",
+        photo:"https://i.postimg.cc/ZRDFXMf7/20250903-110559.jpg"
       },
       {
         name: "Mr. Yash Kanire",
         role: "Secretary",
         department: "Administration",
-        icon: "fa-solid fa-file-pen"
+        icon: "fa-solid fa-file-pen",
+        photo:"https://i.postimg.cc/t4TR4vDt/20250903-104754.jpg"
       },
       {
         name: "Ms. Samruddhi Patil",
         role: "Secretary",
         department: "Administration",
-        icon: "fa-solid fa-file-pen"
+        icon: "fa-solid fa-file-pen",
+        photo:"https://i.postimg.cc/ydnrxjLc/20250903-110653.jpg"
       },
        {
         name: "Ms. Devyani Patil",
@@ -599,80 +603,92 @@ class IndividualTeamCards {
         name: "Mr. Mehbub Mulla",
         role: "Treasurer",
         department: "Finance",
-        icon: "fa-solid fa-coins"
+        icon: "fa-solid fa-coins",
+        photo:"https://i.postimg.cc/tT7m1Pwc/20250903-104925.jpg"
       },
       {
         name: "Mr. Parshv Athane",
         role: "Technical Head",
         department: "Technical",
         icon: "fa-solid fa-code",
-        photo: "https://media.licdn.com/dms/image/v2/D4D03AQFgWj2klKbAhQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1729779732840?e=1759363200&v=beta&t=_cjiMc9hFX9lRuVm-rWsRKAEh9gj2__6PaViQUNAaqc"
+        photo: "https://i.postimg.cc/W1XdsgnJ/IMG-20250903-160629.jpg"
       },
       {
         name: "Ms. Payal Shahapure",
         role: "Technical Head",
         department: "Technical",
-        icon: "fa-solid fa-code"
+        icon: "fa-solid fa-code",
+        photo:"https://i.postimg.cc/9fhxBKSy/20250903-110017.jpg"
       },
       {
         name: "Ms. Mrudula Waichal",
         role: "Technical Head",
         department: "Technical",
-        icon: "fa-solid fa-code"
+        icon: "fa-solid fa-code",
+        photo:"https://i.postimg.cc/1zmDHyWD/20250903-105933.jpg"
       },
       {
         name: "Ms. Sejal Mali",
         role: "Technical Head",
         department: "Technical",
-        icon: "fa-solid fa-code"
+        icon: "fa-solid fa-code",
+        photo:"https://i.postimg.cc/44LST87T/20250903-110408.jpg"
       },
       {
         name: "Ms. Sakshi Kamble",
         role: "Technical Head",
         department: "Technical",
-        icon: "fa-solid fa-code"
+        icon: "fa-solid fa-code",
+        photo:"https://i.postimg.cc/QtjYcL7z/20250903-110714.jpg"
       },
       {
         name: "Mr. Mrudul Deshmukh",
         role: "Event Head",
         department: "Events",
-        icon: "fa-solid fa-calendar-plus"
+        icon: "fa-solid fa-calendar-plus",
+        photo:"https://i.postimg.cc/fRKHBBhF/20250903-110124.jpg"
       },
       {
         name: "Mr. Samarth Navale",
         role: "Event Head",
         department: "Events",
-        icon: "fa-solid fa-calendar-plus"
+        icon: "fa-solid fa-calendar-plus",
+        photo:"https://i.postimg.cc/HnV3xgc1/20250903-110156.jpg"
       },
       {
         name: "Mr. Yash Vasagadekar",
         role: "Event Head",
         department: "Events",
-        icon: "fa-solid fa-calendar-plus"
+        icon: "fa-solid fa-calendar-plus",
+        photo:"https://i.postimg.cc/mDdzVMcs/20250903-111907.jpg"
       },
       {
         name: "Mr. Viraj Kadam",
         role: "Event Head",
         department: "Events",
-        icon: "fa-solid fa-calendar-plus"
+        icon: "fa-solid fa-calendar-plus",
+        photo:"https://i.postimg.cc/Nj7nZQRd/20250903-105030.jpg" 
       },
       {
         name: "Mr. Rajvardhan Kadam",
         role: "Social Media Manager",
         department: "Marketing",
-        icon: "fa-solid fa-bullhorn"
+        icon: "fa-solid fa-bullhorn",
+        photo:"https://i.postimg.cc/5yYt9z6f/20250903-112312.jpg"
       },
       {
         name: "Mr. Shrutik Khurape",
         role: "Marketing Head",
         department: "Marketing",
-        icon: "fa-solid fa-bullhorn"
+        icon: "fa-solid fa-bullhorn",
+        photo:"https://i.postimg.cc/bv9D412M/20250903-112854.jpg"
       },
       {
         name: "Mr. Sammed Kanwade",
         role: "Content Creator",
         department: "Marketing",
-        icon: "fa-solid fa-bullhorn"
+        icon: "fa-solid fa-bullhorn",
+        photo:"https://i.postimg.cc/nVC6MbtL/20250903-113833.jpg"
       },
       {
         name: "Mr. Ajay Desai",
@@ -684,25 +700,29 @@ class IndividualTeamCards {
         name: "Ms. Gayatri Waskar",
         role: "Data Manager",
         department: "Data Management",
-        icon: "fa-solid fa-database"
+        icon: "fa-solid fa-database",
+        photo:"https://i.postimg.cc/g2DLTvh7/20250903-111141.jpg"
       },
       {
         name: "Ms. Sakshi Deshmukh",
         role: "Data Analyst",
         department: "Data Management",
-        icon: "fa-solid fa-database"
+        icon: "fa-solid fa-database",
+        photo:"https://i.postimg.cc/GhPTyfkW/20250903-111041.jpg"
       },
       {
         name: "Ms. Sanika Patil",
         role: "Database Administrator",
         department: "Data Management",
-        icon: "fa-solid fa-database"
+        icon: "fa-solid fa-database",
+        photo:"https://i.postimg.cc/4dnfwcvp/20250903-111100.jpg"
       },
       {
         name: "Ms. Isha Marathe",
         role: "Data Coordinator",
         department: "Data Management",
-        icon: "fa-solid fa-database"
+        icon: "fa-solid fa-database",
+        photo:"https://i.postimg.cc/63D8vzs8/20250903-105853.jpg"
       }
     ];
 
@@ -755,117 +775,110 @@ createIndividualCard(member, index) {
     <div class="department-badge">${member.department}</div>
   `;
 
-  let clone;
+  let clone = null;
+  let isAnimating = false;
 
-  card.addEventListener('mouseenter', () => {
-    // Skip cloning effect on small screens (mobile)
-    if (window.innerWidth <= 768) return;
+  const handleCloneLeave = () => {
+    if (!clone || isAnimating) return;
+    card.dispatchEvent(new Event('mouseleave'));
+  };
 
+  card.addEventListener('mouseenter', (e) => {
+    // Skip on mobile and if already animating
+    if (window.innerWidth <= 768 || isAnimating || clone) return;
+
+    isAnimating = true;
+
+    // Get original position
+    const rect = card.getBoundingClientRect();
+
+    // Create clone
     clone = card.cloneNode(true);
-
-    // Position and style the clone as a centered overlay
     clone.style.position = 'fixed';
-    clone.style.top = '50%';
-    clone.style.left = '50%';
-    clone.style.transform = 'translate(-50%, -50%) scale(1)';
+    clone.style.top = `${rect.top + window.scrollY}px`;
+    clone.style.left = `${rect.left}px`;
+    clone.style.width = `${rect.width}px`;
+    clone.style.height = `${rect.height}px`;
     clone.style.zIndex = '9999';
-    clone.style.width = 'auto';
-    clone.style.maxWidth = '90vw';
-    clone.style.height = 'auto';
-    clone.style.padding = '2rem';
-    clone.style.background = 'rgba(15,15,20,0.95)';
-    clone.style.borderRadius = '1rem';
-    clone.style.boxShadow = '0 30px 70px rgba(0,0,0,0.6), 0 0 50px rgba(255,211,78,0.25)';
-    clone.style.transition = 'transform 0.4s ease';
-    clone.classList.add('individual-card--clone', 'hovered');
-
-    // Show only profile photo, member name, and member role; hide others
-    Array.from(clone.children).forEach(child => {
-      if (
-        !child.classList.contains('profile-section') &&
-        !child.classList.contains('member-name') &&
-        !child.classList.contains('member-role')
-      ) {
-        child.style.display = 'none';
-      }
-    });
-
-    // Enlarge profile photo or initials
-    const profileSection = clone.querySelector('.profile-section');
-    if (profileSection) {
-      const img = profileSection.querySelector('img.profile-photo');
-      if (img) {
-        img.style.width = '180px';
-        img.style.height = '180px';
-        img.style.borderRadius = '50%';
-        img.style.objectFit = 'cover';
-        img.style.margin = '0 auto 20px';
-        img.style.display = 'block';
-      } else {
-        const initials = profileSection.querySelector('.profile-initials');
-        if (initials) {
-          initials.style.width = '180px';
-          initials.style.height = '180px';
-          initials.style.borderRadius = '50%';
-          initials.style.fontSize = '5rem';
-          initials.style.margin = '0 auto 20px';
-          initials.style.display = 'flex';
-          initials.style.alignItems = 'center';
-          initials.style.justifyContent = 'center';
-        }
-      }
-    }
-
-    // Style member name and role text
-    const nameEl = clone.querySelector('.member-name');
-    if (nameEl) {
-      nameEl.style.textAlign = 'center';
-      nameEl.style.fontSize = '2.5rem';
-      nameEl.style.fontWeight = '700';
-      nameEl.style.marginTop = '0';
-    }
-    const roleEl = clone.querySelector('.member-role');
-    if (roleEl) {
-      roleEl.style.textAlign = 'center';
-      roleEl.style.fontSize = '1.5rem';
-      roleEl.style.marginTop = '0.3rem';
-      roleEl.style.color = '#ddd';
-    }
-
-    // Add hover glow to cloned card and role icon overlay
-    const iconOverlay = clone.querySelector('.role-icon-overlay');
-    if (iconOverlay) iconOverlay.classList.add('hovered');
+    clone.style.transition = 'all 0.4s ease';
+    clone.classList.add('individual-card--clone');
 
     document.body.appendChild(clone);
 
-    // Dim other cards except the original hovered one
-    document.querySelectorAll('.individual-card').forEach(c => {
-      if (c !== card) {
-        c.style.filter = 'blur(2px) brightness(0.6)';
-        c.style.pointerEvents = 'none';
-      } else {
-        c.style.filter = 'none';
-        c.style.pointerEvents = 'auto';
-      }
+    // Add leave event to the clone
+    clone.addEventListener('mouseleave', handleCloneLeave);
+
+    // Force reflow
+    clone.offsetHeight;
+
+    // Animate to center
+    requestAnimationFrame(() => {
+      clone.style.top = '50%';
+      clone.style.left = '50%';
+      clone.style.transform = 'translate(-50%, -50%)';
+      clone.style.width = 'auto';
+      clone.style.maxWidth = 'min(90vw, 400px)';
+      clone.style.height = 'auto';
+      clone.style.padding = '2rem';
+      clone.style.background = 'rgba(15,15,20,0.95)';
+      clone.style.borderRadius = '1rem';
+      clone.style.boxShadow = '0 30px 70px rgba(0,0,0,0.6), 0 0 50px rgba(255,211,78,0.25)';
+
+      // Dim other cards
+      document.querySelectorAll('.individual-card').forEach(c => {
+        if (c !== card) {
+          c.style.filter = 'blur(2px) brightness(0.6)';
+          c.style.pointerEvents = 'none';
+        }
+      });
+
+      // Hide original
+      card.style.opacity = '0';
+      isAnimating = false;
     });
   });
 
   card.addEventListener('mouseleave', () => {
-    if (clone && clone.parentNode) {
-      clone.parentNode.removeChild(clone);
-      clone = null;
-    }
-    // Restore original cards
-    document.querySelectorAll('.individual-card').forEach(c => {
-      c.style.filter = '';
-      c.style.pointerEvents = '';
-    });
+    if (!clone || isAnimating) return;
+
+    isAnimating = true;
+
+    // Get original position
+    const rect = card.getBoundingClientRect();
+
+    // Animate back to original position
+    clone.style.transition = 'all 0.3s ease';
+    clone.style.top = `${rect.top + window.scrollY}px`;
+    clone.style.left = `${rect.left}px`;
+    clone.style.width = `${rect.width}px`;
+    clone.style.height = `${rect.height}px`;
+    clone.style.transform = 'none';
+    clone.style.padding = '';
+    clone.style.background = '';
+    clone.style.borderRadius = '';
+    clone.style.boxShadow = '';
+
+    setTimeout(() => {
+      if (clone && clone.parentNode) {
+        clone.parentNode.removeChild(clone);
+        clone = null;
+      }
+
+      // Restore original
+      card.style.opacity = '1';
+
+      // Restore other cards
+      document.querySelectorAll('.individual-card').forEach(c => {
+        c.style.filter = '';
+        c.style.pointerEvents = '';
+      });
+
+      isAnimating = false;
+    }, 300);
   });
 
   return card;
 }
-
-
 
 
   initIntersectionObserver() {
