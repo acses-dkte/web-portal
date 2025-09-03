@@ -950,59 +950,74 @@ upcomingEvents.forEach((event, index) => {
 const pastEventsWithGallery = [
   {
     id: 'hackathon-2024',
-    title: "Freshers Party",
-    description: "Welcoming the new Tech Enthusiastics In College.",
-    date: "Jan 2025",
-    coverImage: "https://i.postimg.cc/hGy6cXWN/Freshers.jpg",
+    title: "Tech Symposium 2K23",
+    description: "National Level Event",
+    date: "Mar 2023",
+    coverImage: "https://i.postimg.cc/Df42rS8W/techsymposium1.jpg",
     gallery: [
-      "https://i.postimg.cc/hGy6cXWN/Freshers.jpg",
-      // "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1400&auto=format&fit=crop",
-      // "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1400&auto=format&fit=crop",
-      // "https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=1400&auto=format&fit=crop",
-      // "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=1400&auto=format&fit=crop",
-      // "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop"
+      "https://i.postimg.cc/BbmcZmH6/techsymposium2.jpg",
+      "https://i.postimg.cc/28BVSH4K/techsymposium3.jpg"
     ],
-    fullDescription: `Step into the world of fun, music, and celebration!
-The Fresher’s Party is here to welcome our new batch with open arms, creating memories that last a lifetime. An evening filled with dazzling performances, exciting games, groovy dance moves, and loads of laughter awaits you.
-
-Get ready to break the ice, make new friends, and kickstart your college journey in the most happening way. Dress to impress, bring your energy, and let’s celebrate the beginning of a brand-new chapter!`,
+    fullDescription: "💡 Tech Symposium 2K23 – A National Level Technical Event 🚀 An electrifying blend of innovation, coding brilliance, and creative web design, organized by ACSES & AISA at DKTE! The event featured two flagship competitions: Paradox – A multi-round coding battle including Aptitude, Debugger, and Codestorm (Problem Solving). WebX – A website designing challenge where participants showcased their UI/UX creativity and development skills. Students from novice to expert levels competed, displaying logic, precision, and innovation. With enthusiastic participation, cash prizes, and certificates, Tech Symposium 2K23 celebrated technical excellence and talent!",
     highlights: [
-      "200+ participants from 1st, 2nd, 3rd students from our colleges",
-      "Warm Welcome to the Freshers",
-      "Testy Food",
-      "Full on Enjoyment"
+      "Tech Symposium 2K23 – A National Level Technical Event",
+      "Paradox – Coding Competition",
+      "WebX – Website Designing Competition",
+      "Multiple Rounds: Aptitude, Debugger, Codestorm & Design",
+      "Participation Categories: Novice & Expert Groups",
+      "Cash Prizes & Recognition for Winners",
+      "Event Date: 24th February",
+      "Organized by ACSES & AISA, DKTE"
     ]
   },
   {
-    id: 'ai-workshop-2024',
-    title: "Inauguration Ceremony",
-    description: "Starting new chapter of the ACSES.",
-    date: "Nov 5-26, 2024",
-    coverImage: "https://i.postimg.cc/MpPmG4tr/Inoguration.jpg",
+    id: 'poster-presentation-2024',
+    title: "Poster Presentation",
+    description: "Enhancing skills through presentation",
+    date: "2024",
+    coverImage: "https://i.postimg.cc/DZZzk5v5/poster1.jpg",
     gallery: [
-      "https://i.postimg.cc/MpPmG4tr/Inoguration.jpg",
-      // "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1400&auto=format&fit=crop",
-      // "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1400&auto=format&fit=crop",
-      // "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1400&auto=format&fit=crop",
-      // "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1400&auto=format&fit=crop"
+      "https://i.postimg.cc/gJQLg1V3/poster2.jpg",
+      "https://i.postimg.cc/sgmBkMPj/poster3.jpg",
+      "https://i.postimg.cc/j5pCHPTX/poster4.jpg",
+      "https://i.postimg.cc/ZnPY6QVb/poster5.jpg"
     ],
-    fullDescription: "The Fresher’s Party will begin with a grand Inauguration Ceremony, marking the start of an exciting evening filled with joy, energy, and celebration. The ceremony aims to warmly welcome the new batch and set a vibrant tone for their journey ahead.",
+    fullDescription: "🌟 Innovation Unleashed: Innovative Poster Presentation! 🚀 An electrifying event filled with creativity, passion, and groundbreaking ideas. Shortlisted teams dazzled the stage with their ingenious posters, leaving judges awestruck. Congrats to Team EliteGeek for clinching the top spot, and kudos to Team Unbeatable for their remarkable performance as runners-up. Special thanks to Prof. Dr. D. V. Kodavade, event coordinator Prof. K. S. Kadam, IIC Convenor Prof. (Dr.) T. I. Bagban for inaugurating the event, alongside the Dean of the department Prof. (Dr.) S. K. Shirgave and faculty members who joined in to congratulate the winning teams.",
     highlights: [
-      "Lighting of the Lamp",
-      "Welcome Speech",
-      "Chief Guest Address",
-      "Cultural Performances",
-      "Fresher Introduction Session",
-      "Vote of Thanks"
+      "Innovation Unleashed: Innovative Poster Presentation",
+      "Electrifying Event Showcasing Creativity & Groundbreaking Ideas",
+      "Team EliteGeek – Winners",
+      "Team Unbeatable – Runners-Up",
+      "Special Thanks to Faculty & Coordinators",
+      "Certificates & Cash Prizes Awarded",
+      "Poster Exhibition Attended by All Students"
     ]
   },
+  // {
+  //   id: 'inauguration-ceremony-2024',
+  //   title: "Inauguration Ceremony",
+  //   description: "Starting new chapter of the ACSES",
+  //   date: "Nov 5-26, 2024",
+  //   coverImage: "https://i.postimg.cc/MpPmG4tr/Inoguration.jpg",
+  //   gallery: [],
+  //   fullDescription: "The Fresher's Party will begin with a grand Inauguration Ceremony, marking the start of an exciting evening filled with joy, energy, and celebration. The ceremony aims to warmly welcome the new batch and set a vibrant tone for their journey ahead.",
+  //   highlights: [
+  //     "Lighting of the Lamp",
+  //     "Welcome Speech",
+  //     "Chief Guest Address",
+  //     "Cultural Performances",
+  //     "Fresher Introduction Session",
+  //     "Vote of Thanks"
+  //   ]
+  // },
   {
-    id: 'career-fair-2024',
-    title: "Tech-Nova 2.0",
+    id: 'tech-nova-2024',
+    title: "Tech-Nova",
     description: "A National level event",
     date: "Aug 20, 2024",
     coverImage: "https://i.postimg.cc/7Y7LhT9v/Tech-Nova.jpg",
     gallery: [
+      "https://i.postimg.cc/BbfGHhxQ/Whats-App-Image-2025-08-11-at-11-08-35-PM.jpg",
       "https://i.postimg.cc/QMvPFVSP/t1.jpg",
       "https://i.postimg.cc/vBMr2smT/t2.jpg"
     ],
