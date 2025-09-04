@@ -538,6 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const imagePaths = [
   "https://i.postimg.cc/MpPmG4tr/Inoguration.jpg",
   "https://i.postimg.cc/hGy6cXWN/Freshers.jpg",
+  "https://i.postimg.cc/5tZJLKS9/team-img.jpg"
 
 ];
 
