@@ -535,6 +535,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+const imagePaths = [
+  "https://i.postimg.cc/MpPmG4tr/Inoguration.jpg",
+  "https://i.postimg.cc/hGy6cXWN/Freshers.jpg",
+
+];
+
+const slideshow = document.getElementById('hero-slideshow');
+slideshow.innerHTML = imagePaths.map((src, i) =>
+  `<img src="${src}" class="slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+         style="opacity: ${i === 0 ? 1 : 0};" />`).join('');
+
+const slides = slideshow.querySelectorAll('.slide');
+let current = 0;
+setInterval(() => {
+  slides[current].style.opacity = 0;
+  current = (current + 1) % slides.length;
+  slides[current].style.opacity = 1;
+}, 3000);
+
+
 
 
 
@@ -544,187 +564,184 @@ class IndividualTeamCards {
   constructor() {
     // Flatten all team members into individual entries
     this.allMembers = [
-      // {
-      //   name: "Prof. S. C. Sagare",
-      //   role: "Mentor",
-      //   department: "Faculty",
-      //   icon: "fa-solid fa-graduation-cap",
-      //   photo: "path/to/photo.jpg"
-      // },
+    
       {
         name: "Mr. Mahaveer Daga",
         role: "President",
         department: "Executive",
         icon: "fa-solid fa-crown",
-        photo: "https://i.postimg.cc/vZWhDXBT/20250903-105608.jpg"
+        photo: "https://i.postimg.cc/fbt5Vb11/20250903-105640.jpg"
       },
       {
         name: "Ms. Pramila Patil",
         role: "Vice President",
         department: "Executive",
         icon: "fa-solid fa-user-tie",
-        photo:"https://i.postimg.cc/d0VCv9Zz/20250903-105829.jpg "
+        photo:"https://i.postimg.cc/JhYFDgTd/20250903-105829.jpg"
       },
-      {
-        name: "Mr. Ashish Andhale",
-        role: "Vice President",
-        department: "Executive",
-        icon: "fa-solid fa-user-tie"
-      },
+      // {
+      //   name: "Mr. Ashish Andhale",
+      //   role: "Vice President",
+      //   department: "Executive",
+      //   icon: "fa-solid fa-user-tie",
+      //   photo:""
+      // },
      
       {
         name: "Ms. Archita Jalan",
         role: "Secretary",
         department: "Administration",
         icon: "fa-solid fa-file-pen",
-        photo:"https://i.postimg.cc/ZRDFXMf7/20250903-110559.jpg"
+        photo:"https://i.postimg.cc/66r79Nbc/20250903-110559.jpg"
       },
-      {
+ {
         name: "Mr. Yash Kanire",
         role: "Secretary",
         department: "Administration",
         icon: "fa-solid fa-file-pen",
-        photo:"https://i.postimg.cc/t4TR4vDt/20250903-104754.jpg"
+        photo:"https://i.postimg.cc/t4jGpLf3/20250903-104754.jpg"
       },
       {
         name: "Ms. Samruddhi Patil",
         role: "Secretary",
         department: "Administration",
         icon: "fa-solid fa-file-pen",
-        photo:"https://i.postimg.cc/ydnrxjLc/20250903-110653.jpg"
+        photo:"https://i.postimg.cc/7hGm2ZC5/20250903-110653.jpg"
       },
        {
         name: "Ms. Devyani Patil",
         role: "Treasurer",
         department: "Finance",
-        icon: "fa-solid fa-coins"
+        icon: "fa-solid fa-coins",
+        photo:"https://i.postimg.cc/MH7smb2h/Whats-App-Image-2025-09-04-at-1-30-24-PM.jpg"
       },
       {
         name: "Mr. Mehbub Mulla",
         role: "Treasurer",
         department: "Finance",
         icon: "fa-solid fa-coins",
-        photo:"https://i.postimg.cc/tT7m1Pwc/20250903-104925.jpg"
+        photo:"https://i.postimg.cc/c1pczZgc/20250903-104925.jpg"
       },
       {
         name: "Mr. Parshv Athane",
         role: "Technical Head",
         department: "Technical",
         icon: "fa-solid fa-code",
-        photo: "https://i.postimg.cc/W1XdsgnJ/IMG-20250903-160629.jpg"
+        photo: "https://i.postimg.cc/kMyRCtYV/parshv.jpg"
       },
       {
         name: "Ms. Payal Shahapure",
-        role: "Technical Head",
+  role: "Technical Head",
         department: "Technical",
         icon: "fa-solid fa-code",
-        photo:"https://i.postimg.cc/9fhxBKSy/20250903-110017.jpg"
+        photo:"https://i.postimg.cc/JnmLxS37/20250903-110017.jpg"
       },
       {
         name: "Ms. Mrudula Waichal",
         role: "Technical Head",
         department: "Technical",
         icon: "fa-solid fa-code",
-        photo:"https://i.postimg.cc/1zmDHyWD/20250903-105933.jpg"
+        photo:"https://i.postimg.cc/RZXsyyzV/20250903-105933.jpg"
       },
       {
         name: "Ms. Sejal Mali",
         role: "Technical Head",
         department: "Technical",
         icon: "fa-solid fa-code",
-        photo:"https://i.postimg.cc/44LST87T/20250903-110408.jpg"
+        photo:"https://i.postimg.cc/Df43btWX/Whats-App-Image-2025-09-04-at-1-32-16-PM.jpg"
       },
       {
         name: "Ms. Sakshi Kamble",
         role: "Technical Head",
         department: "Technical",
         icon: "fa-solid fa-code",
-        photo:"https://i.postimg.cc/QtjYcL7z/20250903-110714.jpg"
+        photo:"https://i.postimg.cc/28x2LMyF/20250903-110714.jpg"
       },
       {
         name: "Mr. Mrudul Deshmukh",
         role: "Event Head",
         department: "Events",
         icon: "fa-solid fa-calendar-plus",
-        photo:"https://i.postimg.cc/fRKHBBhF/20250903-110124.jpg"
+        photo:"https://i.postimg.cc/x1kMjmSV/20250903-110124.jpg"
       },
-      {
+  {
         name: "Mr. Samarth Navale",
         role: "Event Head",
         department: "Events",
         icon: "fa-solid fa-calendar-plus",
-        photo:"https://i.postimg.cc/HnV3xgc1/20250903-110156.jpg"
+        photo:"https://i.postimg.cc/Tw8w6krB/20250903-110156.jpg"
       },
       {
         name: "Mr. Yash Vasagadekar",
         role: "Event Head",
         department: "Events",
         icon: "fa-solid fa-calendar-plus",
-        photo:"https://i.postimg.cc/mDdzVMcs/20250903-111907.jpg"
+        photo:"https://i.postimg.cc/YChY2sWS/20250903-111907.jpg"
       },
       {
         name: "Mr. Viraj Kadam",
         role: "Event Head",
         department: "Events",
         icon: "fa-solid fa-calendar-plus",
-        photo:"https://i.postimg.cc/Nj7nZQRd/20250903-105030.jpg" 
+        photo:"https://i.postimg.cc/YSH6XSJc/20250903-105030.jpg" 
       },
       {
         name: "Mr. Rajvardhan Kadam",
         role: "Social Media Manager",
         department: "Marketing",
         icon: "fa-solid fa-bullhorn",
-        photo:"https://i.postimg.cc/5yYt9z6f/20250903-112312.jpg"
+        photo:"https://i.postimg.cc/fbHb3zQn/20250903-112312.jpg"
       },
       {
         name: "Mr. Shrutik Khurape",
         role: "Marketing Head",
         department: "Marketing",
         icon: "fa-solid fa-bullhorn",
-        photo:"https://i.postimg.cc/bv9D412M/20250903-112854.jpg"
+        photo:"https://i.postimg.cc/d0DYxGpp/20250903-112854.jpg"
       },
       {
-        name: "Mr. Sammed Kanwade",
+   name: "Mr. Sammed Kanwade",
         role: "Content Creator",
         department: "Marketing",
         icon: "fa-solid fa-bullhorn",
-        photo:"https://i.postimg.cc/nVC6MbtL/20250903-113833.jpg"
+        photo:"https://i.postimg.cc/YCqLny33/20250903-113833.jpg"
       },
       {
         name: "Mr. Ajay Desai",
         role: "Digital Marketer",
         department: "Marketing",
-        icon: "fa-solid fa-bullhorn"
+        icon: "fa-solid fa-bullhorn",
+        photo:"https://i.postimg.cc/HLSQp1Sj/20250904-104930.jpg"
       },
       {
         name: "Ms. Gayatri Waskar",
         role: "Data Manager",
         department: "Data Management",
         icon: "fa-solid fa-database",
-        photo:"https://i.postimg.cc/g2DLTvh7/20250903-111141.jpg"
+        photo:"https://i.postimg.cc/Jn6RhPJ1/20250903-111141.jpg"
       },
       {
         name: "Ms. Sakshi Deshmukh",
         role: "Data Analyst",
         department: "Data Management",
         icon: "fa-solid fa-database",
-        photo:"https://i.postimg.cc/GhPTyfkW/20250903-111041.jpg"
+        photo:"https://i.postimg.cc/1t4LvPnQ/20250903-111041.jpg"
       },
       {
         name: "Ms. Sanika Patil",
         role: "Database Administrator",
         department: "Data Management",
         icon: "fa-solid fa-database",
-        photo:"https://i.postimg.cc/4dnfwcvp/20250903-111100.jpg"
+        photo:"https://i.postimg.cc/kgvGmNj5/20250903-111100.jpg"
       },
-      {
+  {
         name: "Ms. Isha Marathe",
         role: "Data Coordinator",
         department: "Data Management",
         icon: "fa-solid fa-database",
-        photo:"https://i.postimg.cc/63D8vzs8/20250903-105853.jpg"
-      }
-    ];
+        photo:"https://i.postimg.cc/qBw3sTcR/20250903-105853.jpg"
+      }
+    ];
 
     this.init();
   }
@@ -838,44 +855,48 @@ createIndividualCard(member, index) {
     });
   });
 
-  card.addEventListener('mouseleave', () => {
-    if (!clone || isAnimating) return;
 
-    isAnimating = true;
+card.addEventListener('mouseenter', () => {
+  if (window.innerWidth <= 768 || clone) return;
 
-    // Get original position
-    const rect = card.getBoundingClientRect();
+  // Create clone
+  clone = card.cloneNode(true);
+  clone.classList.add('individual-card--clone');
+  clone.style.position = 'fixed';
+  clone.style.top = '50%';
+  clone.style.left = '50%';
+  clone.style.transform = 'translate(-50%, -50%) scale(1.2)';
+  clone.style.zIndex = '9999';
+  clone.style.width = 'min(90vw, 400px)';
+  clone.style.maxWidth = '90vw';
+  clone.style.padding = '2rem';
 
-    // Animate back to original position
-    clone.style.transition = 'all 0.3s ease';
-    clone.style.top = `${rect.top + window.scrollY}px`;
-    clone.style.left = `${rect.left}px`;
-    clone.style.width = `${rect.width}px`;
-    clone.style.height = `${rect.height}px`;
-    clone.style.transform = 'none';
-    clone.style.padding = '';
-    clone.style.background = '';
-    clone.style.borderRadius = '';
-    clone.style.boxShadow = '';
+  document.body.appendChild(clone);
 
-    setTimeout(() => {
-      if (clone && clone.parentNode) {
-        clone.parentNode.removeChild(clone);
-        clone = null;
-      }
-
-      // Restore original
-      card.style.opacity = '1';
-
-      // Restore other cards
-      document.querySelectorAll('.individual-card').forEach(c => {
-        c.style.filter = '';
-        c.style.pointerEvents = '';
-      });
-
-      isAnimating = false;
-    }, 300);
+  // Dim other cards
+  document.querySelectorAll('.individual-card').forEach(c => {
+    if (c !== card) {
+      c.style.filter = 'blur(2px) brightness(0.6)';
+      c.style.pointerEvents = 'none';
+    }
   });
+  card.style.opacity = '0';
+});
+
+card.addEventListener('mouseleave', () => {
+  // Remove clone and restore any changes
+  if (clone && clone.parentNode) {
+    clone.parentNode.removeChild(clone);
+    clone = null;
+  }
+  card.style.opacity = '1';
+  document.querySelectorAll('.individual-card').forEach(c => {
+    c.style.filter = '';
+    c.style.pointerEvents = '';
+  });
+});
+
+
 
   return card;
 }
@@ -909,21 +930,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const upcomingEvents = [
   {
-    title: "Cloud Computing Workshop",
-    description: "AWS + Azure fundamentals with hands-on labs.",
-    date: "Oct 28, 2025",
+    title: "Technical Event",
+    description: "fun + challenge + code.🚀",
+    date: "Coming Soon...",
     image:
       "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1400&auto=format&fit=crop",
     isHighlighted: true,
   },
-  {
-    title: "Interview Prep Sessions",
-    description: "Mock interviews and behavioral prep with alumni.",
-    date: "Nov 5, 2025",
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1400&auto=format&fit=crop",
-    isHighlighted: false,
-  },
+  // {
+  //   title: "Interview Prep Sessions",
+  //   description: "Mock interviews and behavioral prep with alumni.",
+  //   date: "Nov 5, 2025",
+  //   image:
+  //     "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1400&auto=format&fit=crop",
+  //   isHighlighted: false,
+  // },
 ];
 
 // Render upcoming
@@ -962,6 +983,103 @@ upcomingEvents.forEach((event, index) => {
 // Enhanced Past Events with Modal Slideshow - REPLACE the existing pastEvents code
 const pastEventsWithGallery = [
   {
+      id: 'tech-nova-2024',
+      title: "Tech-Nova",
+      description: "A National level event",
+      date: "Aug 20, 2024",
+      coverImage: "https://i.postimg.cc/7Y7LhT9v/Tech-Nova.jpg",
+      gallery: [
+        "https://i.postimg.cc/BbfGHhxQ/Whats-App-Image-2025-08-11-at-11-08-35-PM.jpg",
+        "https://i.postimg.cc/QMvPFVSP/t1.jpg",
+        "https://i.postimg.cc/vBMr2smT/t2.jpg"
+      ],
+      fullDescription: "Tech Nova is a thrilling national-level technical competition designed to challenge intellect, speed, and innovation. Participants will battle through multiple rounds, testing their problem-solving skills, technical knowledge, and creativity. Gear up for a journey where aptitude meets technology and brilliance leads to victory!",
+      highlights: [
+        "National-Level Technical Event",
+        "Aptitude Quest – Round 1",
+        "Tech Challenge – Round 2",
+        "Exciting Cash Prizes & Certificates",
+        "Platform to Showcase Skills & Innovation",
+        "Opportunity to Compete with the Best Minds"
+      ]
+    },
+    {
+
+      id: 'defence-careers-2024',
+      title: "Serving the Nation with Skills: Careers in the Defence Sector",
+      description: "Institute Level Workshop",
+      date: "24 July 2024",
+      coverImage: "https://i.postimg.cc/5yNf48TB/Picture10.png", // 🔄 Replace with actual event image if available
+      gallery: [
+        "https://i.postimg.cc/Bn3MXNMf/Picture9.png", // 🔄 Optional: replace/add real workshop photos
+        "https://i.postimg.cc/5yNf48TB/Picture10.png",
+        "https://i.postimg.cc/SsnwDVBt/Picture11.png",
+        "https://i.postimg.cc/HW5NnJd5/Picture12.png"
+      ],
+      fullDescription: "🎖️ Serving the Nation with Skills: Careers in the Defence Sector – An inspiring institute-level workshop organized by the Department of CSE, ACSES Committee, and IEEE Student Branch (STB17301) at DKTE. The session was delivered by **Veteran Group Captain Shrikant Walwadkar** on 24th July 2024. With over **300 participants**, the event aimed to guide students about opportunities and careers in the defence sector. Group Captain Walwadkar highlighted the importance of discipline, motivation, and planning, sharing real-life success stories of youth from nearby villages serving in reputed defence positions. He encouraged students to adopt a balanced daily routine including games, exercise, reading newspapers, and study. The workshop also featured an engaging Q&A session where students clarified doubts about defence exams and career pathways. The event was successfully coordinated by ACSES President Ms. Sanika Tade, IEEE SB President Rajbhushan Kadam, and Faculty Coordinator Prof. Sandipkumar Sagare.",
+      highlights: [
+        "Workshop on Careers in the Defence Sector",
+        "Resource Person: Veteran Group Captain Shrikant Walwadkar",
+        "Organized by ACSES Committee & IEEE Student Branch (STB17301)",
+        "Participants: 300 Students",
+        "Key Guidance: Discipline, Daily Routine, and Motivation",
+        "Stories of Local Students in Defence Services",
+        "Interactive Q&A Session on Exams and Careers",
+        "Coordinated by ACSES & IEEE SB Student Leaders with Faculty Support",
+        "Event Date: 24th July 2024"
+      ]
+    },
+     {
+  id: 'techsymposium-2024',
+  title: "TechSymposium 2K24",
+  description: "National Level Coding Competition",
+  date: "16 March 2024",
+  coverImage: "https://i.postimg.cc/7PBPZQVj/Picture4.jpg", // 🔄 Replace with actual cover photo if available
+  gallery: [
+    "https://i.postimg.cc/L6Bcsq25/Picture5.jpg",  // 🔄 Optional: replace/add real event images
+    "https://i.postimg.cc/52pWsXRT/Picture2.jpg",
+    "https://i.postimg.cc/52ysMjtZ/Picture3.jpg",
+    "https://i.postimg.cc/7PBPZQVj/Picture4.jpg"
+  ],
+  fullDescription: "💡 TechSymposium 2K24 – The ByteSaga 🖥️ A National Level Coding Competition organized by the ACSES Committee at DKTE! The event witnessed enthusiastic participation from **363 students** across institutes, divided into Novice (1st & 2nd year) and Expert (3rd & 4th year) groups. The competition consisted of three challenging rounds: Aptitude, Debugging, and Coding. Following registration and inauguration, participants battled through each stage, showcasing logic, precision, and problem-solving. Winners from both groups were awarded, while all participants received refreshments, dockets, and certificates. The event was powered by the dedicated efforts of faculty and student volunteers, making TechSymposium 2K24 a grand success!",
+  highlights: [
+    "TechSymposium 2K24 – National Level Technical Event",
+    "The ByteSaga – Coding Competition",
+    "Three Rounds: Aptitude, Debugging & Coding",
+    "Participants: 363 Students",
+    "Novice Group (1st & 2nd Year) & Expert Group (3rd & 4th Year)",
+    "Organized by ACSES Committee, DKTE",
+    "Winners (Novice): Vishal Desai & Shreeyash Dongarkar (WCE) – 1st Place",
+    "Winners (Expert): Utkarsh Mandape & Saurabh Salunke (WCE) – 1st Place",
+    "Refreshments, Dockets & Certificates for All Participants",
+    "Event Date: 16th March 2024"
+  ]
+},
+  {
+    id: 'poster-presentation-2024',
+    title: "Poster Presentation",
+    description: "Enhancing skills through presentation",
+    date: "28th February 2024",
+    coverImage: "https://i.postimg.cc/DZZzk5v5/poster1.jpg",
+    gallery: [
+      "https://i.postimg.cc/gJQLg1V3/poster2.jpg",
+      "https://i.postimg.cc/sgmBkMPj/poster3.jpg",
+      "https://i.postimg.cc/j5pCHPTX/poster4.jpg",
+      "https://i.postimg.cc/ZnPY6QVb/poster5.jpg"
+    ],
+    fullDescription: "🌟 Innovation Unleashed: Innovative Poster Presentation! 🚀 An electrifying event filled with creativity, passion, and groundbreaking ideas. Shortlisted teams dazzled the stage with their ingenious posters, leaving judges awestruck. Congrats to Team EliteGeek for clinching the top spot, and kudos to Team Unbeatable for their remarkable performance as runners-up. Special thanks to Prof. Dr. D. V. Kodavade, event coordinator Prof. K. S. Kadam, IIC Convenor Prof. (Dr.) T. I. Bagban for inaugurating the event, alongside the Dean of the department Prof. (Dr.) S. K. Shirgave and faculty members who joined in to congratulate the winning teams.",
+    highlights: [
+      "Innovation Unleashed: Innovative Poster Presentation",
+      "Electrifying Event Showcasing Creativity & Groundbreaking Ideas",
+      "Team EliteGeek – Winners",
+      "Team Unbeatable – Runners-Up",
+      "Special Thanks to Faculty & Coordinators",
+      "Certificates & Cash Prizes Awarded",
+      "Poster Exhibition Attended by All Students"
+    ]
+  },
+      
+  {
     id: 'hackathon-2024',
     title: "Tech Symposium 2K23",
     description: "National Level Event",
@@ -983,67 +1101,7 @@ const pastEventsWithGallery = [
       "Organized by ACSES & AISA, DKTE"
     ]
   },
-  {
-    id: 'poster-presentation-2024',
-    title: "Poster Presentation",
-    description: "Enhancing skills through presentation",
-    date: "2024",
-    coverImage: "https://i.postimg.cc/DZZzk5v5/poster1.jpg",
-    gallery: [
-      "https://i.postimg.cc/gJQLg1V3/poster2.jpg",
-      "https://i.postimg.cc/sgmBkMPj/poster3.jpg",
-      "https://i.postimg.cc/j5pCHPTX/poster4.jpg",
-      "https://i.postimg.cc/ZnPY6QVb/poster5.jpg"
-    ],
-    fullDescription: "🌟 Innovation Unleashed: Innovative Poster Presentation! 🚀 An electrifying event filled with creativity, passion, and groundbreaking ideas. Shortlisted teams dazzled the stage with their ingenious posters, leaving judges awestruck. Congrats to Team EliteGeek for clinching the top spot, and kudos to Team Unbeatable for their remarkable performance as runners-up. Special thanks to Prof. Dr. D. V. Kodavade, event coordinator Prof. K. S. Kadam, IIC Convenor Prof. (Dr.) T. I. Bagban for inaugurating the event, alongside the Dean of the department Prof. (Dr.) S. K. Shirgave and faculty members who joined in to congratulate the winning teams.",
-    highlights: [
-      "Innovation Unleashed: Innovative Poster Presentation",
-      "Electrifying Event Showcasing Creativity & Groundbreaking Ideas",
-      "Team EliteGeek – Winners",
-      "Team Unbeatable – Runners-Up",
-      "Special Thanks to Faculty & Coordinators",
-      "Certificates & Cash Prizes Awarded",
-      "Poster Exhibition Attended by All Students"
-    ]
-  },
-  // {
-  //   id: 'inauguration-ceremony-2024',
-  //   title: "Inauguration Ceremony",
-  //   description: "Starting new chapter of the ACSES",
-  //   date: "Nov 5-26, 2024",
-  //   coverImage: "https://i.postimg.cc/MpPmG4tr/Inoguration.jpg",
-  //   gallery: [],
-  //   fullDescription: "The Fresher's Party will begin with a grand Inauguration Ceremony, marking the start of an exciting evening filled with joy, energy, and celebration. The ceremony aims to warmly welcome the new batch and set a vibrant tone for their journey ahead.",
-  //   highlights: [
-  //     "Lighting of the Lamp",
-  //     "Welcome Speech",
-  //     "Chief Guest Address",
-  //     "Cultural Performances",
-  //     "Fresher Introduction Session",
-  //     "Vote of Thanks"
-  //   ]
-  // },
-  {
-    id: 'tech-nova-2024',
-    title: "Tech-Nova",
-    description: "A National level event",
-    date: "Aug 20, 2024",
-    coverImage: "https://i.postimg.cc/7Y7LhT9v/Tech-Nova.jpg",
-    gallery: [
-      "https://i.postimg.cc/BbfGHhxQ/Whats-App-Image-2025-08-11-at-11-08-35-PM.jpg",
-      "https://i.postimg.cc/QMvPFVSP/t1.jpg",
-      "https://i.postimg.cc/vBMr2smT/t2.jpg"
-    ],
-    fullDescription: "Tech Nova is a thrilling national-level technical competition designed to challenge intellect, speed, and innovation. Participants will battle through multiple rounds, testing their problem-solving skills, technical knowledge, and creativity. Gear up for a journey where aptitude meets technology and brilliance leads to victory!",
-    highlights: [
-      "National-Level Technical Event",
-      "Aptitude Quest – Round 1",
-      "Tech Challenge – Round 2",
-      "Exciting Cash Prizes & Certificates",
-      "Platform to Showcase Skills & Innovation",
-      "Opportunity to Compete with the Best Minds"
-    ]
-  }
+  
 ];
 
 

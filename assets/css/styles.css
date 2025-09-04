@@ -661,6 +661,11 @@
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
 
+
+      .individual-card--clone {
+  pointer-events: none !important;
+}
+
       .event-modal.active .modal-card {
         transform: scale(1) translateY(0);
       }
@@ -1406,15 +1411,22 @@
         transform: translateY(-5px);
       }
 
-      .stat-number {
-        font-family: 'JetBrains Mono', monospace;
-        transition: all 0.3s ease;
-      }
+     .stat-number {
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.3s ease;
+}
 
-      .stat-number.counting {
-        color: #ffd34e;
-        text-shadow: 0 0 20px rgba(255, 211, 78, 0.4);
-      }
+.stat-number.counting {
+  color: #ffd34e;
+  text-shadow: 0 0 20px rgba(255, 211, 78, 0.4);
+}
+.stat-number.plus::after {
+  content: " +";
+  color: #ffd34e; /* or your highlight color */
+  font-weight: 700;
+}
+
+
 
       /* Mission Box */
       .mission-box {
