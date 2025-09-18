@@ -538,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const imagePaths = [
   "https://i.postimg.cc/MpPmG4tr/Inoguration.jpg",
   "https://i.postimg.cc/hGy6cXWN/Freshers.jpg",
-  "https://i.postimg.cc/5tZJLKS9/team-img.jpg"
+  "https://i.postimg.cc/ZYxxtQGG/Whats-App-Image-2025-09-18-at-11-52-30-AM.jpg"
 
 ];
 
@@ -931,11 +931,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const upcomingEvents = [
   {
-    title: "Technical Event",
-    description: "fun + challenge + code.🚀",
-    date: "Coming Soon...",
+    title: " The Pirate’s Gambit",
+    description: "fun + challenge 🚀",
+    date: "01-OCT-2k25",
     image:
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1400&auto=format&fit=crop",
+      "https://i.postimg.cc/QdyRgCSJ/Whats-App-Image-2025-09-17-at-11-38-02-AM.jpg",
     isHighlighted: true,
   },
   // {
