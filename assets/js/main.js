@@ -935,7 +935,7 @@ const upcomingEvents = [
     description: "fun + challenge 🚀",
     date: "01-OCT-2k25",
     image:
-      "https://i.postimg.cc/QdyRgCSJ/Whats-App-Image-2025-09-17-at-11-38-02-AM.jpg",
+      "https://i.postimg.cc/VvNF6kCg/event.png",
     isHighlighted: true,
   },
   // {
