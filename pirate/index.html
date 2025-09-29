@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pirate's Gambit - ACSES</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'pirate': ['Cinzel', 'serif'],
+                    },
+                    animation: {
+                        'treasure-float': 'treasure-float 3s ease-in-out infinite',
+                        'sparkle': 'sparkle 1.5s ease-out infinite',
+                        'sail-sway': 'sail-sway 4s ease-in-out infinite',
+                        'wave': 'wave 2s ease-in-out infinite',
+                        'gem-shine': 'gem-shine 2s ease-in-out infinite',
+                        'scroll-fade': 'scroll-fade 0.8s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-b from-slate-900 via-amber-950 to-slate-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-black/20 border-b border-amber-500/20">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <!-- <div class="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center font-bold text-slate-900">
+                        A
+                    </div> -->
+                    <span class="font-bold text-xl text-amber-400">ACSES</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#hero" class="text-white hover:text-amber-400 transition-colors duration-300 smooth-scroll">Home</a>
+                    <a href="#event" class="text-white hover:text-amber-400 transition-colors duration-300 smooth-scroll">Event</a>
+                    <a href="#rounds" class="text-white hover:text-amber-400 transition-colors duration-300 smooth-scroll">Rounds</a>
+                    <a href="#register" class="text-white hover:text-amber-400 transition-colors duration-300 smooth-scroll">Register</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-amber-500/20 pt-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#hero" class="text-white hover:text-amber-400 transition-colors duration-300 smooth-scroll">Home</a>
+                    <a href="#event" class="text-white hover:text-amber-400 transition-colors duration-300 smooth-scroll">Event</a>
+                    <a href="#rounds" class="text-white hover:text-amber-400 transition-colors duration-300 smooth-scroll">Rounds</a>
+                    <a href="#register" class="text-white hover:text-amber-400 transition-colors duration-300 smooth-scroll">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Fixed padding-top for navbar -->
+    <section id="hero" class="min-h-screen relative overflow-hidden flex items-center pt-20 md:pt-24">
+        <!-- Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-amber-950/80 to-slate-900/90"></div>
+            <img src="assets/vecteezy_an-old-oil-painting-of-100-pirate-ships-fleet-from-ai_28800432.jpg" 
+                 alt="Pirate Ship" class="w-full h-full object-cover opacity-60 animate-sail-sway">
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="floating-element absolute top-20 left-10 text-6xl animate-treasure-float">⚓</div>
+            <div class="floating-element absolute top-32 right-16 text-4xl animate-treasure-float" style="animation-delay: 1s;">🗡️</div>
+            <div class="floating-element absolute bottom-32 left-16 text-5xl animate-treasure-float" style="animation-delay: 2s;">⚓</div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Event Title -->
+                <div class="mb-8 animate-scroll-fade">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent font-pirate">
+                        The Pirate's Gambit
+                    </h1>
+                    <p class="text-xl md:text-2xl text-amber-200 mb-2">by ACSES</p>
+                    <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+                        Set sail on a thrilling journey of puzzles and surprises. Only the sharpest minds will survive the Pirate's Gambit!
+                    </p>
+                </div>
+
+                <!-- Join the Crew Banner -->
+                <div class="mb-12 animate-scroll-fade" style="animation-delay: 0.5s;">
+                    <div class="inline-block bg-gradient-to-r from-red-600 to-red-800 px-8 py-4 rounded-lg transform rotate-1 shadow-2xl border-2 border-red-400">
+                        <h2 class="text-2xl md:text-3xl font-bold text-white font-pirate">
+                            🏴‍☠️ Join the Crew 🏴‍☠️
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Enhanced Treasure Box -->
+               
+
+                <!-- Gems Display -->
+                <div id="gems-reveal" class="mb-8 opacity-0 transition-all duration-1000 transform translate-y-4">
+                    <div class="text-6xl animate-gem-shine">✨💎✨</div>
+                    <p class="text-xl text-amber-300 font-semibold mt-2">Treasure Unlocked!</p>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="animate-scroll-fade" style="animation-delay: 1.5s;">
+                    <button class="bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-slate-900 font-bold py-4 px-8 rounded-full text-lg md:text-xl shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-amber-300 smooth-scroll" data-target="#register">
+                        🚀 Register Now 
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-amber-400 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-amber-400 rounded-full mt-2 animate-wave"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section id="event" class="py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 to-amber-950 opacity-90"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-amber-400 font-pirate">About the Adventure</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-amber-400 to-yellow-500 mx-auto mb-8"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-semibold text-white mb-4">🏆 Exciting Prizes for Winners!</h3>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        Embark on an epic journey where wit meets adventure. Navigate through challenging puzzles, 
+                        decode mysterious ciphers, and prove your worth as the ultimate pirate captain.
+                    </p>
+                    <div class="bg-gradient-to-r from-amber-900/50 to-yellow-900/50 p-6 rounded-lg border border-amber-500/30">
+                        <h4 class="text-xl font-semibold text-amber-300 mb-3">🍽️ What You'll Get:</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• Participants will receive refreshments</li>
+                            <li>• E-certificate of participation</li>
+                            <li>• Networking opportunities</li>
+                            <li>• Skill development experience</li>
+                        </ul>
+                    </div>
+                           <div class="bg-gradient-to-r from-slate-800/70 to-amber-900/70 p-5 rounded-lg mt-4 shadow border border-amber-500/30">
+  <h4 class="text-xl font-semibold text-amber-300 mb-2">Event Details</h4>
+  <ul class="space-y-1 text-lg text-slate-100">
+    <li>🕐 <span class="text-amber-200 font-medium">Time:</span> 10.00 AM Onwards</li>
+    <li>📅 <span class="text-amber-200 font-medium">Date:</span> 1st October 2025</li>
+    <li>📍 <span class="text-amber-200 font-medium">Venue:</span> CSE Auditorium, DKTE's Textile and Engineering Institute,Ichalkaranji</li>
+  </ul>
+</div>
+                </div>
+         
+                <div class="relative">
+                    <img src="assets/20250928_2047_Whimsical Treasure Map_simple_compose_01k68e9skhe0cv793h7k1necd9.png" 
+                         alt="Treasure Map" class="w-full rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-lg"></div>
+    
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-lg"></div>
+                    <img src="assets/Round02.png" 
+                         alt="Treasure Map" class="w-full rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-lg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rounds Section -->
+    <section id="rounds" class="py-20 bg-gradient-to-b from-amber-950 to-slate-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-amber-400 font-pirate">Three Winds of Challenge</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-amber-400 to-yellow-500 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Navigate through three treacherous rounds, each more challenging than the last
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Round 1 -->
+                <div class="bg-gradient-to-br from-slate-800/80 to-amber-900/80 p-8 rounded-xl border border-amber-500/30 hover:border-amber-400/60 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl group">
+                    <div class="text-6xl mb-6 text-center group-hover:animate-bounce">⚔️</div>
+                    <h3 class="text-2xl font-bold text-amber-400 mb-4 text-center">Winds of Wit - Round 1</h3>
+                    <p class="text-gray-300 mb-6 text-center">Mind-bending puzzles and logical challenges</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>• Cryptographic puzzles and cipher challenges</li>
+                        <li>• Logic-based problem solving</li>
+                        <li>• Pattern recognition tasks</li>
+                        <li>• Time-bound competitive format</li>
+                    </ul>
+                </div>
+
+                <!-- Round 2 -->
+                <div class="bg-gradient-to-br from-slate-800/80 to-amber-900/80 p-8 rounded-xl border border-amber-500/30 hover:border-amber-400/60 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl group">
+                    <div class="text-6xl mb-6 text-center group-hover:animate-bounce">🗺️</div>
+                    <h3 class="text-2xl font-bold text-amber-400 mb-4 text-center">Treasure Hunt - Round 2</h3>
+                    <p class="text-gray-300 mb-6 text-center">Strategic treasure hunting adventure</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>• Clue-based navigation challenges</li>
+                        <li>• Strategic thinking exercises</li>
+                        <li>• Team collaboration tasks</li>
+                        <li>• Hidden treasure discovery</li>
+                    </ul>
+                </div>
+
+                <!-- Round 3 -->
+                <div class="bg-gradient-to-br from-slate-800/80 to-amber-900/80 p-8 rounded-xl border border-amber-500/30 hover:border-amber-400/60 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl group">
+                    <div class="text-6xl mb-6 text-center group-hover:animate-bounce">👑</div>
+                    <h3 class="text-2xl font-bold text-amber-400 mb-4 text-center">Captain's Challenge - Round 3</h3>
+                    <p class="text-gray-300 mb-6 text-center">Surprise Round 🚨</p>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="py-20 bg-gradient-to-b from-slate-900 to-amber-950 relative">
+        <div class="absolute inset-0 opacity-20">
+            <img src="assets/Picsart_25-09-29_16-44-36-250.jpg" 
+                 alt="Treasure Map Background" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-amber-400 font-pirate">Join the Crew</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-amber-400 to-yellow-500 mx-auto mb-8"></div>
+            </div>
+
+            <div class="max-w-lg mx-auto">
+                <div class="bg-gradient-to-br from-slate-800/90 to-amber-900/90 p-8 rounded-2xl shadow-2xl border-2 border-amber-500/40 backdrop-blur-sm registration-card">
+                    <div class="text-center mb-8">
+                        <div class="text-6xl mb-4">🏴‍☠️</div>
+                        <h3 class="text-2xl font-bold text-amber-400 mb-2">Ready to Set Sail?</h3>
+                        <p class="text-gray-300">Secure your spot in the adventure of a lifetime</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-gradient-to-r from-green-900/50 to-emerald-900/50 p-4 rounded-lg border border-green-500/30">
+                            <h4 class="text-lg font-semibold text-green-300 mb-2">Registration Fee</h4>
+                            <p class="text-3xl font-bold text-white">₹50 Only</p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-blue-900/50 to-indigo-900/50 p-4 rounded-lg border border-blue-500/30">
+                            <h4 class="text-lg font-semibold text-blue-300 mb-3">Payment Methods</h4>
+                            <div class="flex justify-center space-x-6">
+                                <div class="text-center">
+                                    <div class="text-3xl mb-1">💵</div>
+                                    <span class="text-sm text-gray-300">Cash</span>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl mb-1">💻</div>
+                                    <span class="text-sm text-gray-300">Online</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div></div>
+                        <a href="https://forms.gle/X78AvjxRr84hc5t26">
+                        <button  class="w-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-slate-900 font-bold py-4 px-6 rounded-full text-lg shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-amber-300">
+                            ⚔️ Register Now ⚔️
+                        </button>
+                        </a>
+
+                        <p class="text-xs text-gray-400 text-center">
+                            By registering, you agree to participate in the ultimate pirate adventure
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 py-12 border-t border-amber-500/20">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+              
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <!-- <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center font-bold text-slate-900 text-xl">
+                        A
+                    </div> -->
+                      <div class="hero-logo mb-6">
+  <img src="https://i.postimg.cc/pTm9J0Y3/Whats-App-Image-2025-09-03-at-8-48-40-PM.jpg" alt="ACSES Logo" class="w-24 h-auto mx-auto md:mx-0">
+</div>
+                    <!-- <span class="font-bold text-2xl text-amber-400">ACSES</span> -->
+                </div>
+                              <a href="https://acses-dkte.vercel.app/">👉Click here to visit our Official Website</a>
+                <p class="text-gray-400 mb-4">Association of Computer Science and Engineering Students</p>
+                <p class="text-sm text-gray-500">© 2025 ACSES. All rights reserved. May the winds be ever in your favor!</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

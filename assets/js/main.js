@@ -970,12 +970,14 @@ upcomingEvents.forEach((event, index) => {
       : ""
     }
         </div>
+       <a href="pirate/index.html">
         <div class="p-6">
           <h4 class="text-xl font-semibold">${event.title}</h4>
           <p class="text-white/70 mt-1">${event.description}</p>
           <div class="mt-3 text-white/60 text-sm">
             <i class="fa-regular fa-calendar-days mr-2"></i>${event.date}
           </div>
+          </a>
         </div>
       `;
   upcomingContainer.appendChild(eventCard);
